@@ -6,3 +6,5 @@
 npx create-next-app 
 
 ### run
+
+yarn dev
