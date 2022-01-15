@@ -1,4 +1,4 @@
-import Layout from '../components/Layout'
+import Layout from '../components/Outline/Layout'
 import '../styles/globals.css'
 
 import Head from "next/head"
