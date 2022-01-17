@@ -20,3 +20,12 @@ https://tailwindui.com/components/marketing/sections/feature-sections
 
 ### Footer
 https://tailwind-elements.com/docs/standard/navigation/footer/
+
+
+
+## Another
+
+### how to use calc() in tailwind CSS?
+https://stackoverflow.com/questions/65976223/how-to-use-calc-in-tailwind-css
+
+--- --- --- --- --- --- --- --- ---
