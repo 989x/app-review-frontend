@@ -21,6 +21,16 @@ https://tailwindui.com/components/marketing/sections/feature-sections
 ### Footer
 https://tailwind-elements.com/docs/standard/navigation/footer/
 
+## [id].jsx
+
+### Breadcrumbs
+https://flowbite.com/docs/components/breadcrumb/
+
+### Post
+https://tailwindui.com/components/ecommerce/components/product-features
+
+### Comment
+https://flowbite.com/docs/components/forms/
 
 
 ## Another
