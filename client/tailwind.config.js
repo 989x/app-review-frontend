@@ -13,6 +13,9 @@ module.exports = {
           white10: "#FFFFFF1A"
         }
       },
+      fontFamily: {
+        soleii: 'Soleii'
+      }
     },
   },
   plugins: [],

@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import ProductScreen from '../components/ProductScreen'
+import LastestScreen from '../components/LastestScreen'
 import FeaturesScreen from '../components/Section/FeaturesScreen'
 import styles from '../styles/Home.module.css'
 import AboutScreen from '../components/Section/AboutScreen'
@@ -17,7 +17,7 @@ export default function Home() {
       </Head>
 
       <AboutScreen/>
-      <ProductScreen/>
+      <LastestScreen/>
       <BestproductScreen/>
       <FeaturesScreen/>
       

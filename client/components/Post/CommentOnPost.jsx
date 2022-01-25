@@ -3,7 +3,7 @@ import React from "react"
 const CommentOnPost = () => {
     return (
         <div>
-            <div className="p-6 max-w-sm bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
+            <div className="p-6 max-w-sm bg-white rounded-lg shadow-md dark:bg-gray-800 ">
                 <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Header Comment</h5>
                 <p className="mb-3 font-normal dark:text-gray-200">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Distinctio quidem id dignissimos quos aliquam laboriosam, doloribus ipsam error incidunt unde voluptatem voluptatibus temporibus eos corporis itaque voluptas dolorum commodi atque!</p>
                 

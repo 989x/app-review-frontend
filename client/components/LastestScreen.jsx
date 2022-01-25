@@ -1,7 +1,7 @@
 import styles from "../styles/ProductList.module.css";
 import ProductCard from "./ProductCard";
 
-const FirstScreen = () => {
+const LastestScreen = () => {
     return (
 
         <div className={styles.container}>
@@ -15,7 +15,6 @@ const FirstScreen = () => {
                 <ProductCard/>
                 <ProductCard/>
                 <ProductCard/>
-                <ProductCard/>
                 
             </div>
 
@@ -24,4 +23,4 @@ const FirstScreen = () => {
     )
 }
 
-export default FirstScreen
+export default LastestScreen
