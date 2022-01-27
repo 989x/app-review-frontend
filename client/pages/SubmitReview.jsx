@@ -3,12 +3,12 @@ export default function SubmitReview() {
         
         <div className="max-w-fit mx-auto px-4 grid items-center grid-cols-1 gap-y-16 gap-x-8 sm:px-6 sm:pt-6 sm:pb-4 lg:max-w-screen-2xl lg:px-6 lg:grid-cols-1">
 
-            <div className="mx-auto px-4 grid items-center grid-cols-1 gap-y-16 gap-x-8 sm:px-6 sm:pt-6 sm:pb-4 lg:max-w-screen-lg lg:px-6 lg:grid-cols-1">
+            <div className="mx-auto px-4 grid gap-y-16 gap-x-8 sm:px-6 sm:pt-6 sm:pb-4 lg:max-w-screen-lg lg:px-6">
 
-                <div className="md:col-span-1">
-                    <div className="px-4 sm:px-0">
+                <div className="">
+                    <div className="sm:px-0">
                         <h3 className="text-lg font-medium leading-6 text-gray-900">Write Review</h3>
-                        <p className="mt-1 text-sm text-gray-600">
+                        <p className="mt-1 text-base text-gray-600 text">
                             This information will be displayed publicly so be careful what you share.
                         </p>
                     </div>
@@ -16,7 +16,7 @@ export default function SubmitReview() {
         
                 <div className="md:col-span-8">
                     <form action="#" method="POST">
-                        <div className="shadow sm:rounded-md sm:overflow-hidden">
+                        <div className="shadow-md sm:rounded-md sm:overflow-hidden">
                             <div className="bg-white space-y-6 sm:p-6">
                                 
                                 <div className="col-span-6">
@@ -35,7 +35,7 @@ export default function SubmitReview() {
 
                                 <div className="col-span-6">
                                     <label htmlFor="product-name" className="block text-sm font-medium text-gray-700">
-                                        Suitable Category
+                                        This product is about ( Types , Category ) 
                                     </label>
                                     <input
                                         type="text"
@@ -49,7 +49,7 @@ export default function SubmitReview() {
 
                                 <div className="col-span-6">
                                     <label htmlFor="product-name" className="block text-sm font-medium text-gray-700">
-                                        Product Brand
+                                        Product Brand or Company Name
                                     </label>
                                     <input
                                         type="text"
@@ -60,10 +60,46 @@ export default function SubmitReview() {
                                         placeholder="Exam : Apple"
                                     />
                                 </div>
+                                
+                                
+
+                                <fieldset>
+                                    <div>
+                                    <legend className="text-base font-medium text-gray-900">What do you think of this product ?</legend>
+                                    <p className="text-sm text-gray-500">Select one.</p>
+                                    </div>
+
+                                    <div className="mt-2 space-y-4">
+                                        <div className="flex items-center">
+                                            <input
+                                                id="push-everything"
+                                                name="push-notifications"
+                                                type="radio"
+                                                className="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300"
+                                            />
+                                            <label htmlFor="push-everything" className="ml-3 block text-sm font-medium text-gray-700">
+                                                Good Product
+                                            </label>
+                                        </div>
+                                        <div className="flex items-center">
+                                            <input
+                                                id="push-email"
+                                                name="push-notifications"
+                                                type="radio"
+                                                className="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300"
+                                            />
+                                            <label htmlFor="push-email" className="ml-3 block text-sm font-medium text-gray-700">
+                                                Bad Product
+                                            </label>
+                                        </div>
+                                    </div>
+                                </fieldset>
+
+
 
                                 <div>
                                     <label htmlFor="about" className="block text-sm font-medium text-gray-700">
-                                    About
+                                        Write a message
                                     </label>
                                     <div className="mt-1">
                                         <textarea
@@ -71,7 +107,7 @@ export default function SubmitReview() {
                                             name="about"
                                             rows={4}
                                             className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 block w-full sm:text-sm border border-gray-300 rounded-md"
-                                            placeholder="It is fastest phone , when me play game is very smooth"
+                                            placeholder="Exam : It is fastest phone , when me play game is very smooth."
                                             defaultValue={''}
                                         />
                                     </div>
@@ -114,15 +150,17 @@ export default function SubmitReview() {
                                 </div>
                             </div>
 
-                            <div className="px-4 py-3 bg-gray-50 text-right sm:px-6">
+                            <div className="px-4 py-3 bg-gray-100 text-right sm:px-6">
                                 <button
                                     type="submit"
                                     className="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                                 >
-                                    Save
+                                    Post
                                 </button>
                             </div>
+
                         </div>
+
                     </form>
                 </div>
             </div>

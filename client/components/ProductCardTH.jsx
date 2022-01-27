@@ -5,13 +5,9 @@ const ProductCard = () => {
             <div class="p-2 max-w-xs">
 
                 <div class="bg-white rounded-lg shadow-md dark:bg-gray-800">
-
-                    <div>
-                        <a href="#">
-                            <img className="object-cover h-36 w-full" src="/img/nvidia-geforce-rtx-3080-12.jpeg" alt="" />
-                        </a>
-                    </div>
-
+                    <a href="#">
+                        <img className="object-cover h-36 w-full" src="/img/nvidia-geforce-rtx-3080-12.jpeg" alt="" />
+                    </a>
                     <div class="p-5">
 
                         <a href="#">
@@ -25,16 +21,16 @@ const ProductCard = () => {
                         </div>
 
                         <a href="#">
-                            <h5 class="mb-2 text-base text-gray-900 dark:text-white">How graphics card bundles are both hurting and helping during the GPU shortage</h5>
+                            <h5 class="mb-2 text-base text-gray-900 dark:text-white">Graphics card อันนี้มีการทำงานที่ดี คุ้มค่าต่อราคา </h5>
                         </a>
 
-                        <p class="mb-3 text-sm text-gray-700 dark:text-gray-300">GPU bundles have been one of the only ways to buy a graphics card in 2021, and they’ve been met with a mixed . . . </p>
+                        <p class="mb-3 text-sm text-gray-700 dark:text-gray-300">ได้รองใช้งานมาสักพัก รู้สึกประทับใจมากๆ แนะนำเลยครับ เล่นเกมก็ลื่นมากๆ ไม่เชื่อลองซื้อมาดูได้นะครับ . . . </p>
                         
                         <div class="pt-3 pb-3">
                             <div class="flex items-center">
                                 <img class="w-6 h-6 rounded-full mr-4" src="/img/exploding-head.png" alt="Avatar of Jonathan Reinink" />
                                 <div class="text-sm">
-                                    <p class="text-sm text-white">Jonathan Reinink</p>
+                                    <p class="text-sm text-white">นายชื่อจริง นามสกุล</p>
                                     <p class="text-sm text-gray-300">Aug 18</p>
                                 </div>
                             </div>

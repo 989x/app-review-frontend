@@ -12,20 +12,20 @@ export default function Example() {
                     <ol class="inline-flex items-center space-x-1 md:space-x-3">
                         <li class="inline-flex items-center">
                         <a href="#" class="inline-flex items-center text-sm text-gray-700 hover:text-gray-900 dark:text-gray-400 dark:hover:text-blue-700">
-                            <svg class="mr-2 w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z"></path></svg>
-                            <a href="#" class="ml-1 text-xl tracking-widest font-medium text-gray-700 hover:text-gray-900 md:ml-2 dark:text-gray-400 dark:hover:text-blue-700">Home</a>
+                            <svg class="mr-1 w-4 h-4" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z"></path></svg>
+                            <a href="#" class="ml-1 text-base tracking-wide font-medium text-gray-700 hover:text-gray-900 md:ml-2 dark:text-gray-400 dark:hover:text-blue-700">Home</a>
                         </a>
                         </li>
                         <li>
                         <div class="flex items-center">
                             <svg class="w-6 h-6 text-gray-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path></svg>
-                            <a href="#" class="ml-1 text-xl tracking-widest font-medium text-gray-700 hover:text-gray-900 md:ml-2 dark:text-gray-400 dark:hover:text-blue-700">Projects</a>
+                            <a href="#" class="ml-1 text-base tracking-wide font-medium text-gray-700 hover:text-gray-900 md:ml-2 dark:text-gray-400 dark:hover:text-blue-700">Projects</a>
                         </div>
                         </li>
                         <li aria-current="page">
                         <div class="flex items-center">
                             <svg class="w-6 h-6 text-gray-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path></svg>
-                            <span class="ml-1 text-xl tracking-widest font-medium text-gray-400 md:ml-2 dark:text-gray-500">FlowBite</span>
+                            <span class="ml-1 text-base tracking-wide font-medium text-gray-400 md:ml-2 dark:text-gray-500">FlowBite</span>
                         </div>
                         </li>
                     </ol>
@@ -39,38 +39,44 @@ export default function Example() {
 
                 <div>
 
-                    <div className="grid grid-col-2 sm:gap-6 lg:gap-8">
+                    <div className="grid grid-col-2 sm:gap-6 lg:gap-8 justify-items-center">
 
                         <img
                         src="/img/nvidia-geforce-rtx-3080-12.jpeg"
                         alt="Walnut card tray with white powder coated steel divider and 3 punchout holes."
-                        className="bg-gray-100 rounded-lg"
+                        className="bg-gray-100 rounded w-11/12"
                         />
 
                         <div className="flex sm:gap-4 justify-around">
-                            <img className=""
-                            width={120} height={120}
-                            src="/img/nvidia-geforce-rtx-3080-12.jpeg"
+                            <img 
+                            width={100} height={100}
+                            src="/img/graphics-card.webp"
                             alt="Top down view of walnut card tray with embedded magnets and card groove."
-                            className="bg-gray-100 rounded-lg"
+                            className="bg-gray-100 rounded object-cover h-full w-24"
                             />
-                            <img className=""
-                            width={120} height={120}
-                            src="/img/nvidia-geforce-rtx-3080-12.jpeg"
+                            <img 
+                            width={100} height={100}
+                            src="/img/graphics-card2.webp"
                             alt="Top down view of walnut card tray with embedded magnets and card groove."
-                            className="bg-gray-100 rounded-lg"
+                            className="bg-gray-100 rounded object-cover h-full w-24"
                             />
                             <img
-                            width={120} height={120}
-                            src="/img/nvidia-geforce-rtx-3080-12.jpeg"
+                            width={100} height={100}
+                            src="/img/graphics-card.webp"
                             alt="Side of walnut card tray with card groove and recessed card area."
-                            className="bg-gray-100 rounded-lg"
+                            className="bg-gray-100 rounded object-cover h-full w-24"
                             />
                             <img
-                            width={120} height={120}
+                            width={100} height={100}
+                            src="/img/graphics-card2.webp"
+                            alt="Side of walnut card tray with card groove and recessed card area."
+                            className="bg-gray-100 rounded object-cover h-full w-24"
+                            />
+                            <img
+                            width={100} height={100}
                             src="/img/more-icon-1.png"
                             alt="Walnut card tray filled with cards and card angled in dedicated groove."
-                            className="bg-gray-100 rounded-lg"
+                            className="bg-gray-100 rounded object-cover h-full w-24"
                             />
                         </div>
                     </div>
@@ -86,15 +92,18 @@ export default function Example() {
                     <div className="p-6 max-w-7xl bg-white rounded-lg shadow-md dark:bg-gray-800">
 
                         <div>
-                            <h2 className="text-2xl font-extrabold tracking-normal text-gray-200 sm:text-2xl">EVGA RTX 3090 FTW3 Ultra Gaming 24GB GDDR6X</h2>
-                            {/* <p className="text-xl mt-1 text-gray-300">
-                            # RTX # RTX3090 # Gaming
-                            </p> */}
+                            <h2 className="font-extrabold tracking-normal text-gray-200 sm:text-xl">EVGA RTX 3090 FTW3 Ultra Gaming 24GB GDDR6X</h2>
+                            <p className="text-base mt-1 text-gray-300">
+                                Category : Computer
+                            </p>
+                            <p className="text-base mt-1 text-gray-300">
+                                Brand : EVGA
+                            </p>
                         </div>
 
-                        <div className="pt-10">
-                            <h2 className="text-2xl font-extrabold tracking-normal text-gray-200 sm:text-2xl">Price : 19,000 - 32,000 Bath</h2>
-                            <p className="text-xl mt-1 text-gray-300">
+                        <div className="pt-6">
+                            <h2 className="font-extrabold tracking-normal text-gray-200 sm:text-xl">Price : 19,000 - 32,000 Bath</h2>
+                            <p className="text-md mt-1 text-gray-300">
                             Lastest when : 22 Dec 2021
                             </p>
                         </div>
@@ -106,15 +115,15 @@ export default function Example() {
 
                         <div>
                             <div class="flex items-center">
-                                <img class="w-14 h-14 rounded-full mr-6" src="/img/exploding-head.png" alt="Avatar of Jonathan Reinink" />
-                                <div class="text-xl">
+                                <img class="w-12 h-12 rounded-full mr-6" src="/img/exploding-head.png" alt="Avatar of Jonathan Reinink" />
+                                <div>
 
-                                    <div className="pb-4">
-                                        <p class="text-2xl text-green-500 leading-none font-extrabold tracking-wide">GOOD PRODUCT</p>
+                                    <div className="pb-1">
+                                        <h2 className="font-black text-green-500 sm:text-xl">GOOD PRODUCT</h2>
                                     </div>
 
                                     <div>
-                                        <p class="text-xl text-gray-200 leading-none font-bold tracking-wide">By : Jonathan Reinink</p>
+                                        <p class="text-base text-gray-200 leading-none font-bold tracking-wide">By : Jonathan Reinink</p>
                                     </div>
                                     
                                 </div>
@@ -122,11 +131,11 @@ export default function Example() {
                         </div>
 
                         <div className="pt-8">
-                            <h2 className="pb-4 text-2xl font-extrabold tracking-normal text-gray-200 sm:text-2xl">How graphics card bundles are both hurting and helping during the GPU shortage</h2>
-                            <p className="text-xl mt-1 text-gray-200">
+                            <h2 className="pb-4 font-bold tracking-normal text-gray-200 sm:text-lg">How graphics card bundles are both hurting and helping during the GPU shortage</h2>
+                            <p className="text-base mt-1 text-gray-200">
                             GPU bundles have been one of the only ways to buy a graphics card in 2021, and they’ve been met with a mixed reception. Claims of endless profiteering and offloading undesirable products have run amok, painting retailers as nothing more than money-hungry entities that are capitalizing on a bad situation.
                             </p>
-                            <p className="text-xl mt-4 text-gray-200">
+                            <p className="text-base mt-4 text-gray-200">
                             There’s a thread of truth to that, but after talking with market experts and retailers, I’m convinced that GPU bundles help more than they hurt. Although there isn’t a magic bullet to solve the GPU shortage, retailers can make cards easier to find by bundling graphics cards with other products.                        </p>
                         </div>
 

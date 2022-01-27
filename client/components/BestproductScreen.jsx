@@ -7,7 +7,7 @@ const BestproductScreen = () => {
             
             <div className={styles.container}>
 
-                <p className="mt-2 text-3xl leading-8 font-bold tracking-tight text-gray-900">
+                <p className="mt-8 mb-4 text-2xl leading-8 font-bold tracking-tight text-gray-900">
                     Best product from reviews
                 </p>
 
