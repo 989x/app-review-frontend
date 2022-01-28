@@ -4,34 +4,34 @@ const ProductCard = () => {
 
             <div class="p-2 max-w-xs">
 
-                <div class="bg-white rounded-lg shadow-md dark:bg-gray-800">
+                <div class="bg-white rounded-lg shadow-md">
                     <a href="#">
-                        <img className="object-cover h-36 w-full" src="/img/nvidia-geforce-rtx-3080-12.jpeg" alt="" />
+                        <img className="rounded-t-lg object-cover h-36 w-full" src="/img/nvidia-geforce-rtx-3080-12.jpeg" alt="" />
                     </a>
                     <div class="p-5">
 
                         <a href="#">
-                            <h5 class="mb-2 text-base font-bold tracking-wide text-gray-900 dark:text-white">EVGA RTX 3090 FTW3 Ultra Gaming 24GB GDDR6X</h5>
+                            <h5 class="font-['SoleiiBold'] mb-2 text-base text-gray-900">EVGA RTX 3090 FTW3 Ultra Gaming 24GB GDDR6X</h5>
                         </a>
 
                         <div className="pb-4">
-                            <div className="text-sm text-green-500 leading-none font-extrabold tracking-wide">
+                            <div className="font-['SoleiiBold'] text-sm text-lime-500 leading-none font-extrabold tracking-wide">
                                 GOOD PRODUCT
                             </div>
                         </div>
 
                         <a href="#">
-                            <h5 class="mb-2 text-base text-gray-900 dark:text-white">Graphics card อันนี้มีการทำงานที่ดี คุ้มค่าต่อราคา </h5>
+                            <h5 class="font-['SoleiiBold'] mb-2 text-base text-gray-900">Graphics card อันนี้มีการทำงานที่ดี คุ้มค่าต่อราคา </h5>
                         </a>
 
-                        <p class="mb-3 text-sm text-gray-700 dark:text-gray-300">ได้รองใช้งานมาสักพัก รู้สึกประทับใจมากๆ แนะนำเลยครับ เล่นเกมก็ลื่นมากๆ ไม่เชื่อลองซื้อมาดูได้นะครับ . . . </p>
+                        <p class="mb-3 text-sm text-gray-900">ได้ลองใช้งานมาสักพัก รู้สึกประทับใจมากๆ แนะนำเลยครับ เล่นเกมก็ลื่นมากๆ ไม่เชื่อลองซื้อมาดูได้นะครับ . . . </p>
                         
                         <div class="pt-3 pb-3">
                             <div class="flex items-center">
                                 <img class="w-6 h-6 rounded-full mr-4" src="/img/exploding-head.png" alt="Avatar of Jonathan Reinink" />
                                 <div class="text-sm">
-                                    <p class="text-sm text-white">นายชื่อจริง นามสกุล</p>
-                                    <p class="text-sm text-gray-300">Aug 18</p>
+                                    <p class="text-sm text-gray-900">นายชื่อจริง นามสกุล</p>
+                                    <p class="text-sm text-gray-900">Aug 18</p>
                                 </div>
                             </div>
                         </div>

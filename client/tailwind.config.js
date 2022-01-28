@@ -14,7 +14,7 @@ module.exports = {
         }
       },
       fontFamily: {
-        soleii: 'Soleii'
+        soleii: ['Soleii', 'SoleiiBold', 'SoleiiLight'],
       }
     },
   },

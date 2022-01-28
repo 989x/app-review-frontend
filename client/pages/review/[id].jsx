@@ -89,21 +89,21 @@ export default function Example() {
                 {/* item detail */}
                 <div className="grid grid-col-2 lg:gap-4">
 
-                    <div className="p-6 max-w-7xl bg-white rounded-lg shadow-md dark:bg-gray-800">
+                    <div className="p-6 max-w-7xl rounded-lg shadow-md">
 
                         <div>
-                            <h2 className="font-extrabold tracking-normal text-gray-200 sm:text-xl">EVGA RTX 3090 FTW3 Ultra Gaming 24GB GDDR6X</h2>
-                            <p className="text-base mt-1 text-gray-300">
+                            <h2 className="font-['SoleiiBold'] tracking-normal text-black sm:text-lg">EVGA RTX 3090 FTW3 Ultra Gaming 24GB GDDR6X</h2>
+                            <p className="text-base mt-1 text-gray-900">
                                 Category : Computer
                             </p>
-                            <p className="text-base mt-1 text-gray-300">
+                            <p className="text-base mt-1 text-gray-900">
                                 Brand : EVGA
                             </p>
                         </div>
 
                         <div className="pt-6">
-                            <h2 className="font-extrabold tracking-normal text-gray-200 sm:text-xl">Price : 19,000 - 32,000 Bath</h2>
-                            <p className="text-md mt-1 text-gray-300">
+                            <h2 className="font-['SoleiiBold'] tracking-normal text-black sm:text-lg">Price : 19,000 - 32,000 Bath</h2>
+                            <p className="text-md mt-1 text-gray-900">
                             Lastest when : 22 Dec 2021
                             </p>
                         </div>
@@ -111,7 +111,7 @@ export default function Example() {
                     </div>
 
 
-                    <div className="p-6 max-w-7xl bg-white rounded-lg shadow-md dark:bg-gray-800">
+                    <div className="p-6 max-w-7xl rounded-lg shadow-md">
 
                         <div>
                             <div class="flex items-center">
@@ -119,11 +119,11 @@ export default function Example() {
                                 <div>
 
                                     <div className="pb-1">
-                                        <h2 className="font-black text-green-500 sm:text-xl">GOOD PRODUCT</h2>
+                                    <h2 className="font-['SoleiiBold'] font-black text-lime-500 sm:text-xl">GOOD PRODUCT</h2>
                                     </div>
 
                                     <div>
-                                        <p class="text-base text-gray-200 leading-none font-bold tracking-wide">By : Jonathan Reinink</p>
+                                        <p class="text-base text-black leading-none font-bold tracking-wide">By : Jonathan Reinink</p>
                                     </div>
                                     
                                 </div>
@@ -131,11 +131,11 @@ export default function Example() {
                         </div>
 
                         <div className="pt-8">
-                            <h2 className="pb-4 font-bold tracking-normal text-gray-200 sm:text-lg">How graphics card bundles are both hurting and helping during the GPU shortage</h2>
-                            <p className="text-base mt-1 text-gray-200">
+                            <h2 className="font-['SoleiiBold'] pb-4 tracking-normal text-black sm:text-lg">How graphics card bundles are both hurting and helping during the GPU shortage</h2>
+                            <p className="text-base mt-1 text-gray-900">
                             GPU bundles have been one of the only ways to buy a graphics card in 2021, and they’ve been met with a mixed reception. Claims of endless profiteering and offloading undesirable products have run amok, painting retailers as nothing more than money-hungry entities that are capitalizing on a bad situation.
                             </p>
-                            <p className="text-base mt-4 text-gray-200">
+                            <p className="text-base mt-4 text-gray-900">
                             There’s a thread of truth to that, but after talking with market experts and retailers, I’m convinced that GPU bundles help more than they hurt. Although there isn’t a magic bullet to solve the GPU shortage, retailers can make cards easier to find by bundling graphics cards with other products.                        </p>
                         </div>
 

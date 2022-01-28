@@ -27,7 +27,6 @@ export default function SubmitReview() {
                                         type="text"
                                         name="product-name"
                                         id="product-name"
-                                        autoComplete="street-address"
                                         className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
                                         placeholder="Exam : IPhone xs max 64 gb"
                                     />
@@ -35,13 +34,12 @@ export default function SubmitReview() {
 
                                 <div className="col-span-6">
                                     <label htmlFor="product-name" className="block text-sm font-medium text-gray-700">
-                                        This product is about ( Types , Category ) 
+                                        This product is about ( Types or Category ) 
                                     </label>
                                     <input
                                         type="text"
                                         name="product-name"
                                         id="product-name"
-                                        autoComplete="street-address"
                                         className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
                                         placeholder="Exam : Phone Mobile"
                                     />
@@ -55,7 +53,6 @@ export default function SubmitReview() {
                                         type="text"
                                         name="product-name"
                                         id="product-name"
-                                        autoComplete="street-address"
                                         className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
                                         placeholder="Exam : Apple"
                                     />
@@ -153,9 +150,9 @@ export default function SubmitReview() {
                             <div className="px-4 py-3 bg-gray-100 text-right sm:px-6">
                                 <button
                                     type="submit"
-                                    className="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                                    className="w-40 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-base font-bold rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                                 >
-                                    Post
+                                    Post your review
                                 </button>
                             </div>
 

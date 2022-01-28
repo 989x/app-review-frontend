@@ -15,7 +15,7 @@ const AboutScreen = () => {
                             <p className="text-black px-2 ">For the Black Friday weekend .</p>
                         </div>
                         </div>
-                        <h1 className="lg:text-6xl font-bold pt-8 md:text-6xl text-4xl font-soleii">
+                        <h1 className="font-['SoleiiBold'] lg:text-6xl pt-8 md:text-6xl text-4xl">
                             Fastest & secure platform to invest in crypto
                         </h1>
                         <p className="text-xl font-medium pt-8 md:w-1/2 opacity-70">
