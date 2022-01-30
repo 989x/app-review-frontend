@@ -16,9 +16,9 @@ export default function Example() {
 
                 <div>
                     <img
-                    className="mx-auto h-12 w-auto"
-                    src="https://tailwindui.com/img/logos/workflow-mark-indigo-600.svg"
-                    alt="Workflow"
+                        className="mx-auto h-16 w-auto"
+                        src="img/waving-hand-sign.png"
+                        alt="Workflow"
                     />
                     <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">Register account</h2>
                     <p className="mt-2 text-center text-lg text-gray-600">
@@ -121,7 +121,7 @@ export default function Example() {
                             </div>
                     </div>
 
-                    <div>
+                    <div className="pb-4">
                         <button
                             type="submit"
                             className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"

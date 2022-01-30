@@ -16,10 +16,10 @@ const AboutScreen = () => {
                         </div>
                         </div>
                         <h1 className="font-['SoleiiBold'] lg:text-6xl pt-8 md:text-6xl text-4xl">
-                            Fastest & secure platform to invest in crypto
+                            Review & Discuss platform for product in internet
                         </h1>
                         <p className="text-xl font-medium pt-8 md:w-1/2 opacity-70">
-                            Buy and sell cryptocurrencies, trusted by 10M wallets with over $30 billion in transactions.
+                            Comment and see reviews from people around the world In the most neutral platform
                         </p>
                         <div className="pt-8">
                             <a href="/SubmitReview" className="px-2 py-2 bg-brand-button rounded-md inline-flex justify-center items-center space-x-2">
@@ -487,10 +487,10 @@ const AboutScreen = () => {
                         </div>
                         <div class="felx flex-col my-auto justify-start space-y-2">
                             <h1 class="text-4xl font-bold">
-                                $30B
+                                $2402
                             </h1>
                             <p class="opacity-80 text-sm">
-                                Digital Currency Exchanged
+                                Have reviews with all in platform.
                             </p>
                         </div>
                     </div>
@@ -505,10 +505,10 @@ const AboutScreen = () => {
                         </div>
                         <div class="felx flex-col my-auto justify-start space-y-2">
                             <h1 class="text-4xl font-bold">
-                                $30B
+                                $520
                             </h1>
                             <p class="opacity-80 text-sm">
-                                Digital Currency Exchanged
+                                Have Product with all in platform.
                             </p>
                         </div>
                     </div>
@@ -523,10 +523,10 @@ const AboutScreen = () => {
                         </div>
                         <div class="felx flex-col my-auto justify-start space-y-2">
                             <h1 class="text-4xl font-bold">
-                                $30B
+                                $4204
                             </h1>
                             <p class="opacity-80 text-sm">
-                                Digital Currency Exchanged
+                                Have user with all in platform.
                             </p>
                         </div>
                     </div>
@@ -541,10 +541,10 @@ const AboutScreen = () => {
                         </div>
                         <div class="felx flex-col my-auto justify-start space-y-2">
                             <h1 class="text-4xl font-bold">
-                                $30B
+                                $30
                             </h1>
                             <p class="opacity-80 text-sm">
-                                Digital Currency Exchanged
+                                Reivew per day in platform.
                             </p>
                         </div>
                     </div>

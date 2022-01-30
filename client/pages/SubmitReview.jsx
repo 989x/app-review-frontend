@@ -145,7 +145,35 @@ export default function SubmitReview() {
                                         </div>
                                     </div>
                                 </div>
+
+
+                                <div>
+                                    <div className="flex items-center">
+                                        <div className="flex items-center">
+                                            <input
+                                                id="remember-me"
+                                                name="remember-me"
+                                                type="checkbox"
+                                                className="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded"
+                                            />
+                                            <label htmlFor="remember-me" className="pr-1 ml-2 block text-base text-gray-900">
+                                                I accept the 
+                                            </label>
+                                        </div>
+
+                                        <div className="text-base">
+                                            <a href="#" className="font-medium text-indigo-600 hover:text-indigo-500">
+                                                Agreement & Policy.
+                                            </a>
+                                    </div>
+                                </div>
+
                             </div>
+
+
+                            </div>
+
+                            
 
                             <div className="px-4 py-3 bg-gray-100 text-right sm:px-6">
                                 <button
