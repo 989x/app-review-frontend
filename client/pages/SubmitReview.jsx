@@ -1,4 +1,27 @@
+import {useState, useEffect} from "react";
+
 export default function SubmitReview() {
+    const [nameProduct, setNameProduct] = useState('')
+    const [two, setTwo] = useState('')
+    const [three, setThree] = useState('')
+    const [four, setFour] = useState('')
+    const [frive, setFrive] = useState('')
+    const [six, setSix] = useState('')
+    
+    const submit = () => {
+        console.log('asd')
+        alert()
+        //test
+        // axios.post(local/3001/)
+    }
+
+    useEffect(() => {
+        console.log('asdasd')
+        return () => {
+            
+        }
+    }, [])
+
     return (
         
         <div className="max-w-fit mx-auto px-4 grid items-center grid-cols-1 gap-y-16 gap-x-8 sm:px-6 sm:pt-6 sm:pb-4 lg:max-w-screen-2xl lg:px-6 lg:grid-cols-1">
@@ -15,7 +38,7 @@ export default function SubmitReview() {
                 </div>
         
                 <div className="md:col-span-8">
-                    <form action="#" method="POST">
+                    <div>
                         <div className="shadow-md sm:rounded-md sm:overflow-hidden">
                             <div className="bg-white space-y-6 sm:p-6">
                                 
@@ -24,6 +47,9 @@ export default function SubmitReview() {
                                         Product Real Name 
                                     </label>
                                     <input
+                                        onChange = {(e) => setNameProduct(e.target.value)} 
+                                        value = {nameProduct}
+
                                         type="text"
                                         name="product-name"
                                         id="product-name"
@@ -177,7 +203,8 @@ export default function SubmitReview() {
 
                             <div className="px-4 py-3 bg-gray-100 text-right sm:px-6">
                                 <button
-                                    type="submit"
+                                    onClick={submit}
+                                    type="button"
                                     className="w-40 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-base font-bold rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                                 >
                                     Post your review
@@ -186,7 +213,7 @@ export default function SubmitReview() {
 
                         </div>
 
-                    </form>
+                    </div>
                 </div>
             </div>
     
