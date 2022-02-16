@@ -9,18 +9,18 @@ export default function SubmitReview() {
     const [six, setSix] = useState('')
     
     const submit = () => {
-        console.log('asd')
+        console.log(res.body)
         alert()
         //test
         // axios.post(local/3001/)
     }
 
-    useEffect(() => {
-        console.log('asdasd')
-        return () => {
+    // useEffect(() => {
+    //     console.log('asdasd')
+    //     return () => {
             
-        }
-    }, [])
+    //     }
+    // }, [])
 
     return (
         

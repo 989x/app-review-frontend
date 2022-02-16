@@ -68,3 +68,6 @@ https://nextjs.org/docs/advanced-features/custom-document
 ### how to use calc() in tailwind CSS?
 https://stackoverflow.com/questions/65976223/how-to-use-calc-in-tailwind-css
 
+### Warning: next-head-count is missing
+https://stackoverflow.com/questions/62385332/warning-next-head-count-is-missing
+> fix : in _app.js move head overhead layout
