@@ -1,6 +1,7 @@
 import styles from "../styles/ProductList.module.css";
 import ProductCard from "./ProductCard";
 import ProductCardTH from "./ProductCardTH";
+import ProductCardAxios from "./ProductCardAxios";
 
 const LastestScreen = () => {
     return (
@@ -13,9 +14,9 @@ const LastestScreen = () => {
 
             <div className={styles.wrapper}>
 
-                <ProductCard/>
-                <ProductCardTH/>
-                <ProductCard/>
+                <ProductCardAxios/>
+                {/* <ProductCardTH/>
+                <ProductCard/> */}
                 
             </div>
 

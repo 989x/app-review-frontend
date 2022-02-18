@@ -1,21 +1,29 @@
 import {useState, useEffect} from "react";
 import axios from 'axios';
 
+import Link from 'next/link';
+
 export default function SubmitReview() {
     const [nameProduct, setNameProduct] = useState('')
     const [aboutProduct, setAboutProduct] = useState('')
     const [brandProduct, setBrandProduct] = useState('')
-    const [good, setGood] = useState('')
-    const [bad, setBad] = useState('')
+    // const [good, setGood] = useState('')
+    // const [bad, setBad] = useState('')
+    const [choice, setChoice] = useState('')
+    const [title, setTitle] = useState('')
     const [message, setMessage] = useState('')
-    const [img, setImg] = useState('')
+    // const [img, setImg] = useState('')
     
     const submit = () => {
+        // window.location.href = "/review/1"
+
         console.log(nameProduct)
         console.log(aboutProduct)
         console.log(brandProduct)
-        console.log(good)
-        console.log(bad)
+        // console.log(good)
+        // console.log(bad)
+        console.log(choice)
+        console.log(title)
         console.log(message)
 
         // alert()
@@ -24,8 +32,10 @@ export default function SubmitReview() {
             nameProduct,
             aboutProduct,
             brandProduct,
-            good,
-            bad,
+            // good,
+            // bad,
+            choice,
+            title,
             message,
         })
     }
@@ -68,6 +78,22 @@ export default function SubmitReview() {
 
                                 <div className="col-span-6">
                                     <label htmlFor="product-name" className="block text-sm font-medium text-gray-700">
+                                        Product Brand or Company Name
+                                    </label>
+                                    <input
+                                        onChange = {(e) => setBrandProduct(e.target.value)} 
+                                        value = {brandProduct}
+                                    
+                                        type="text"
+                                        name="product-name"
+                                        id="product-name"
+                                        className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+                                        placeholder="Exam : Apple"
+                                    />
+                                </div>
+
+                                <div className="col-span-6">
+                                    <label htmlFor="product-name" className="block text-sm font-medium text-gray-700">
                                         This product is about ( Types or Category ) 
                                     </label>
                                     <input
@@ -82,21 +108,6 @@ export default function SubmitReview() {
                                     />
                                 </div>
 
-                                <div className="col-span-6">
-                                    <label htmlFor="product-name" className="block text-sm font-medium text-gray-700">
-                                        Product Brand or Company Name
-                                    </label>
-                                    <input
-                                        onChange = {(e) => setBrandProduct(e.target.value)} 
-                                        value = {brandProduct}
-                                    
-                                        type="text"
-                                        name="product-name"
-                                        id="product-name"
-                                        className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
-                                        placeholder="Exam : Apple"
-                                    />
-                                </div>
                                 
                                 
 
@@ -109,9 +120,9 @@ export default function SubmitReview() {
                                     <div className="mt-2 space-y-4">
                                         <div className="flex items-center">
                                             <input
-                                                onChange = {(e) => setGood(e.target.value)} 
-                                                // value = {good}
-                                                value = "good"
+                                                onChange = {(e) => setChoice(e.target.value)} 
+                                                // value = {choice}
+                                                value = "GOOD PRODUCT"
                                                 // onclick="good"
                                             
                                                 id="push-everything"
@@ -125,9 +136,9 @@ export default function SubmitReview() {
                                         </div>
                                         <div className="flex items-center">
                                             <input
-                                                onChange = {(e) => setBad(e.target.value)} 
-                                                // value = {bad}
-                                                value = "bad"
+                                                onChange = {(e) => setChoice(e.target.value)} 
+                                                // value = {choice}
+                                                value = "BAD PRODUCT"
                                                 // onclick="bad"
 
                                                 id="push-email"
@@ -144,6 +155,26 @@ export default function SubmitReview() {
 
 
 
+
+                                <div>
+                                    <label htmlFor="about" className="block text-sm font-medium text-gray-700">
+                                        Title
+                                    </label>
+                                    <div className="mt-1">
+                                        <textarea
+                                            onChange = {(e) => setTitle(e.target.value)} 
+                                            value = {title}
+
+                                            id="about"
+                                            name="about"
+                                            rows={1}
+                                            className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 block w-full sm:text-sm border border-gray-300 rounded-md"
+                                            placeholder="Exam : The pros and cons of this."
+                                            defaultValue={''}
+                                        />
+                                    </div>
+                                </div>
+
                                 <div>
                                     <label htmlFor="about" className="block text-sm font-medium text-gray-700">
                                         Write a message
@@ -155,15 +186,15 @@ export default function SubmitReview() {
 
                                             id="about"
                                             name="about"
-                                            rows={4}
+                                            rows={5}
                                             className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 block w-full sm:text-sm border border-gray-300 rounded-md"
                                             placeholder="Exam : It is fastest phone , when me play game is very smooth."
                                             defaultValue={''}
                                         />
                                     </div>
-                                    <p className="mt-2 text-sm text-gray-500">
+                                    {/* <p className="mt-2 text-sm text-gray-500">
                                         Write an honest review or what you feel.
-                                    </p>
+                                    </p> */}
                                 </div>
 
                                 <div>
@@ -229,14 +260,20 @@ export default function SubmitReview() {
                             
 
                             <div className="px-4 py-3 bg-gray-100 text-right sm:px-6">
+
                                 <button
+
                                     onClick={submit}
                                     type="button"
                                     className="w-40 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-base font-bold rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                                 >
                                     Post your review
                                 </button>
+
+                                
                             </div>
+
+                            
 
                         </div>
 
