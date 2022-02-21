@@ -41,6 +41,19 @@ https://flowbite.com/docs/components/forms/
 ### Form Submit
 https://tailwindui.com/components/application-ui/forms/form-layouts
 
+### Button Link
+https://www.youtube.com/watch?v=rwmZMjWpPYc
+
+
+----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
+
+## javascript
+
+## axios function > on axios delete
+https://www.youtube.com/watch?v=7RHpg5HuzkA
+
+## window obfect (window.function) > window.location.href="http://localhost:4000/";
+https://www.youtube.com/watch?v=ZrHusMEcNak
 
 ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
 
@@ -68,3 +81,6 @@ https://nextjs.org/docs/advanced-features/custom-document
 ### how to use calc() in tailwind CSS?
 https://stackoverflow.com/questions/65976223/how-to-use-calc-in-tailwind-css
 
+### Warning: next-head-count is missing
+https://stackoverflow.com/questions/62385332/warning-next-head-count-is-missing
+> fix : in _app.js move head overhead layout

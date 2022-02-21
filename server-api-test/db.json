@@ -1,0 +1,49 @@
+{
+  "product": [
+    {
+      "nameProduct": "asdasdasdasd",
+      "aboutProduct": "asdasd",
+      "brandProduct": "asdasd",
+      "choice": "GOOD PRODUCT",
+      "title": "How graphics card bundles are both hurting and helping during the GPU shortage",
+      "message": "GPU bundles have been one of the only ways to buy a graphics card in 2021, and they’ve been met with a mixed",
+      "id": 1
+    },
+    {
+      "nameProduct": "EVGA RTX 3090 FTW3 Ultra Gaming 24GB GDDR6X",
+      "aboutProduct": "test",
+      "brandProduct": "Evga",
+      "choice": "GOOD PRODUCT",
+      "title": "How graphics card bundles are both hurting and helping during the GPU shortage",
+      "message": "GPU bundles have been one of the only ways to buy a graphics card in 2021, and they’ve been met with a mixed",
+      "id": 2
+    },
+    {
+      "nameProduct": "samsung aaa",
+      "aboutProduct": "phone",
+      "brandProduct": "samsung",
+      "choice": "BAD PRODUCT",
+      "title": "so baddd",
+      "message": "slowwwwlyy",
+      "id": 3
+    },
+    {
+      "nameProduct": "de 1 edit edit",
+      "aboutProduct": "phone edit",
+      "brandProduct": "samsung edit",
+      "choice": "BAD PRODUCT",
+      "title": "so baddd",
+      "message": "slowwwwlyy",
+      "id": 4
+    },
+    {
+      "nameProduct": "de",
+      "aboutProduct": "phone",
+      "brandProduct": "samsung",
+      "choice": "BAD PRODUCT",
+      "title": "so baddd",
+      "message": "slowwwwlyy",
+      "id": 5
+    }
+  ]
+}
