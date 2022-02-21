@@ -78,18 +78,29 @@ export default function Example() {
 
     // for delete
 
-    const getData = () => {
-        axios.get(`http://localhost:3100/product/`)
-        .get(() => {
-            getData();
-        })
-    }
+    // const getData = () => {
+    //     axios.get(`http://localhost:3100/product/`)
+    //     .get(() => {
+    //         getData();
+    //     })
+    // }
 
-    const onDelete = (id) => {
-        axios.delete(`http://localhost:3100/product/${id}`)
-        .get(() => {
-            getData();
-        })
+    // const onDelete = () => {
+    //     confirm('Do you want to delete')
+    //     axios.delete(`http://localhost:3100/product/${router.query.id}`)
+    //     // .get(() => {
+    //     //     getData();
+    //     // })
+    // }
+
+    const onDelete = () => {
+
+        if(window.confirm('Do you want to delete')){
+            axios.delete(`http://localhost:3100/product/${router.query.id}`), window.location.href="http://localhost:4000/";
+            // .get(() => {
+            //     getData();
+            // })
+        }
     }
 
     // for delete
@@ -204,12 +215,15 @@ export default function Example() {
                                         >
                                             Edit
                                         </a>
-                                        <button 
+    {/* delete ------------- */}
+                                        <a 
+                                            // href="/"
                                             class="bg-red-500 hover:bg-red-800 text-white font-bold py-2 px-4 rounded"
-                                            // onClick={() => onDelete(data.id)}
+                                            onClick={() => onDelete(router.query.id)}
                                         >
                                             Delete
-                                        </button>
+                                        </a>
+    {/* delete ------------- */}
                                     </div>
                                 </div>
 

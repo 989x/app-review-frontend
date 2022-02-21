@@ -47,6 +47,16 @@ https://www.youtube.com/watch?v=rwmZMjWpPYc
 
 ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
 
+## javascript
+
+## axios function > on axios delete
+https://www.youtube.com/watch?v=7RHpg5HuzkA
+
+## window obfect (window.function) > window.location.href="http://localhost:4000/";
+https://www.youtube.com/watch?v=ZrHusMEcNak
+
+----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
+
 
 ## font
 
