@@ -3,6 +3,8 @@
 ### install tailwind
 https://tailwindcss.com/docs/guides/nextjs
 
+### use <ContextProvider> : in _app.js
+https://www.netlify.com/blog/2020/12/01/using-react-context-for-state-management-in-next.js/
 
 ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
 
