@@ -5,8 +5,6 @@ import axios from "axios";
 
 const ProductCardAxios = () => {
 
-    // new
-
     const [apiData, setApiData] = useState([]);
 
     useEffect(() => {
@@ -17,31 +15,17 @@ const ProductCardAxios = () => {
         })
     }, [])
 
-
-    // const [product, setProduct] = useState([]);
-    // useEffect(() => {
-    //     const fetechProducts = async () => {
-    //         const res = await axios("/products")
-    //         setProduct(res.data)
-    //     }
-    //     fetechProducts()
-    // })
-
     const setData = (_id, username, realName, typeOrCategory, goodOrNot, title, message, createdAt) => {
         console.log(_id);
         localStorage.setItem('username', username)
         localStorage.setItem('realName', realName)
         localStorage.setItem('typeOrCategory', typeOrCategory) 
-        localStorage.setItem('brandOrCompany', brandOrCompany) 
+        // localStorage.setItem('brandOrCompany', brandOrCompany) 
         localStorage.setItem('goodOrNot', goodOrNot)
         localStorage.setItem('Title', title)
         localStorage.setItem('message', message)
         localStorage.setItem('createdAt', createdAt) 
-        // localStorage.setItem('message', message)
-
     }
-    
-    // new
 
     return (
         
@@ -92,12 +76,10 @@ const ProductCardAxios = () => {
                                             </div>
                                         </div>
                                     </div>
-
-                                
-                                    
+    {/* setData ----    */}
                                     <div className="flex flex-row-reverse">
                                         <a 
-                                            onClick={() => setData(data.realName, data.typeOrCategory, data.brandOrCompany, data.goodOrNot, data.title,data.message)}
+                                            onClick={() => setData(data.username, data.realName, data.typeOrCategory, data.brandOrCompany, data.goodOrNot, data.title, data.message, data.createdAt)}
                                             href={`/review/${data._id}`}
                                             className="inline-flex items-center py-2 px-3 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
                                         >
@@ -115,7 +97,6 @@ const ProductCardAxios = () => {
                     
                 )
             })}
-
 
         </div>
     )
