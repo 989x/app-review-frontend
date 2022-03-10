@@ -8,7 +8,7 @@ export default function Example() {
 
     const userRef = useRef()
     const passwordRef = useRef()
-    const {  user, dispatch, isFecthing } = useContext((Context))
+    const {  user, dispatch, isFetching } = useContext(Context)
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -24,17 +24,10 @@ export default function Example() {
         }
     }
     console.log(user);
+    console.log(dispatch);
 
   return (
-    <>
-      {/*
-        This example requires updating your template:
-
-        ```
-        <html class="h-full bg-gray-50">
-        <body class="h-full">
-        ```
-      */}
+    <div>
         <div className="min-h-full flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
             <div className="max-w-md w-full space-y-8">
 
@@ -128,6 +121,6 @@ export default function Example() {
                 </form>
             </div>
         </div>
-    </>
+    </div>
   )
 }

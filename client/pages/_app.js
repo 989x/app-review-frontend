@@ -8,18 +8,18 @@ function MyApp({ Component, pageProps }) {
 
   return (
     <> 
+      {/* add contextProvider for login system */}
+      <ContextProvider>
     
-    <Head>
-    
-    </Head>
+        <Head>
+        
+        </Head>
       
-    {/* add contextProvider for login system */}
-    <ContextProvider>
-      <Layout>
-        <Component {...pageProps} />
-      </Layout>
-    </ContextProvider>  
+        <Layout>
+          <Component {...pageProps} />
+        </Layout>
     
+      </ContextProvider>  
     </>
       
   )
