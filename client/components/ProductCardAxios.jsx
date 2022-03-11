@@ -5,6 +5,7 @@ import axios from "axios";
 
 const ProductCardAxios = () => {
 
+    const PF = "http://localhost:5001/images/";
     const [apiData, setApiData] = useState([]);
 
     useEffect(() => {
@@ -15,7 +16,7 @@ const ProductCardAxios = () => {
         })
     }, [])
 
-    const setData = (_id, username, realName, typeOrCategory, goodOrNot, title, message, createdAt) => {
+    const setData = (_id, username, realName, typeOrCategory, goodOrNot, title, message, createdAt, photo) => {
         console.log(_id);
         localStorage.setItem('username', username)
         localStorage.setItem('realName', realName)
@@ -25,6 +26,7 @@ const ProductCardAxios = () => {
         localStorage.setItem('Title', title)
         localStorage.setItem('message', message)
         localStorage.setItem('createdAt', createdAt) 
+        localStorage.setItem('photo', photo) 
     }
 
     return (
@@ -40,7 +42,7 @@ const ProductCardAxios = () => {
 
                                 <div>
                                     <a href="#">
-                                        <img className="rounded-t-lg object-cover h-36 w-full" src="/img/nvidia-geforce-rtx-3080-12.jpeg" alt="" />
+                                        <img className="rounded-t-lg object-cover h-36 w-full" src={PF + data.photo} alt="" />
                                     </a>
                                 </div>
 
@@ -79,7 +81,7 @@ const ProductCardAxios = () => {
     {/* setData ----    */}
                                     <div className="flex flex-row-reverse">
                                         <a 
-                                            onClick={() => setData(data.username, data.realName, data.typeOrCategory, data.brandOrCompany, data.goodOrNot, data.title, data.message, data.createdAt)}
+                                            onClick={() => setData(setApiData)}
                                             href={`/review/${data._id}`}
                                             className="inline-flex items-center py-2 px-3 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
                                         >

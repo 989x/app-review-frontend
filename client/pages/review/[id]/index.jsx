@@ -7,7 +7,7 @@ import axios from "axios";
 
 export default function Example() {
 
-    // new
+    const PF = "http://localhost:5001/images/";
 
     const [username, setUsername] = useState('')
     const [realName, setRealName] = useState('')
@@ -17,9 +17,8 @@ export default function Example() {
     const [title, setTitle] = useState('')
     const [message, setMessage] = useState('')
     const [createdAt, setCreatedAt] = useState('')
+    const [photo, setPhoto] = useState('')
     const [_id, setID] = useState(null);
-
-    // new
 
 //------------//------------//------------//------------//------------//------------
 
@@ -45,6 +44,8 @@ export default function Example() {
                 setTitle(getData.data.title);
                 setMessage(getData.data.message);
                 setCreatedAt(getData.data.createdAt);
+
+                setPhoto(getData.data.photo)
                 console.log(getData.data)
             })
             console.log(router.query._id)
@@ -111,7 +112,7 @@ export default function Example() {
                         <div className="grid grid-col-2 sm:gap-6 lg:gap-8 justify-items-center">
 
                             <img
-                            src="/img/nvidia-geforce-rtx-3080-12.jpeg"
+                            src={PF + photo}
                             alt="Walnut card tray with white powder coated steel divider and 3 punchout holes."
                             className="bg-gray-100 rounded w-11/12"
                             />
