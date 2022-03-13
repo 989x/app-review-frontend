@@ -1,34 +1,33 @@
 import React, { useEffect, useState } from 'react'
 import styles from "../styles/ProductList.module.css";
 
-
 import axios from "axios";
 
 const ProductCardAxios = () => {
 
-    // new
-
+    const PF = "http://localhost:5001/images/";
     const [apiData, setApiData] = useState([]);
 
     useEffect(() => {
-        axios.get(`http://localhost:3100/product`)
+        // axios.get(`http://localhost:3100/product`)
+        axios.get(`http://localhost:5001/api/products`)
         .then((getData) => {
             setApiData(getData.data);
         })
     }, [])
 
-    const setData = (nameProduct, aboutProduct, brandProduct, choice, title, message, id) => {
-        console.log(id);
-        localStorage.setItem('nameProduct', nameProduct)
-        localStorage.setItem('aboutProduct', aboutProduct)
-        localStorage.setItem('brandProduct', brandProduct)
-        localStorage.setItem('choice', choice)
-        localStorage.setItem('title', title)
+    const setData = (_id, username, realName, typeOrCategory, goodOrNot, title, message, createdAt, photo) => {
+        console.log(_id);
+        localStorage.setItem('username', username)
+        localStorage.setItem('realName', realName)
+        localStorage.setItem('typeOrCategory', typeOrCategory) 
+        // localStorage.setItem('brandOrCompany', brandOrCompany) 
+        localStorage.setItem('goodOrNot', goodOrNot)
+        localStorage.setItem('Title', title)
         localStorage.setItem('message', message)
-
+        localStorage.setItem('createdAt', createdAt) 
+        localStorage.setItem('photo', photo) 
     }
-    
-    // new
 
     return (
         
@@ -37,59 +36,56 @@ const ProductCardAxios = () => {
                 return (
     
                     <div className="pr-6">
-                        {/* <div class="p-2 max-w-xs"> */}
-                        <div class="pb-8 w-72">
-                            <div class="bg-white rounded-lg shadow-md">
+                        {/* <div className="p-2 max-w-xs"> */}
+                        <div className="pb-8 w-72">
+                            <div className="bg-white rounded-lg shadow-md">
 
                                 <div>
                                     <a href="#">
-                                        <img className="rounded-t-lg object-cover h-36 w-full" src="/img/nvidia-geforce-rtx-3080-12.jpeg" alt="" />
+                                        <img className="rounded-t-lg object-cover h-36 w-full" src={PF + data.photo} alt="" />
                                     </a>
                                 </div>
 
-                                <div class="p-5">
+                                <div className="p-5">
 
                                     <div className="h-16">
                                         <a href="#">
-                                            <h5 class="min-h-max font-['SoleiiBold'] mb-2 text-base font-bold tracking-wide text-gray-900">{data.nameProduct}</h5>
+                                            <h5 className="min-h-max font-['SoleiiBold'] mb-2 text-base font-bold tracking-wide text-gray-900">{data.realName}</h5>
                                         </a>
                                     </div>
 
-
-                                    <div className="pb-4">
-                                        <div className={`font-['SoleiiBold'] text-sm ${data.choice == "GOOD PRODUCT" ? "text-lime-500" : "text-red-600" } leading-none tracking-wide`}>
-                                            {data.choice}
+                                    <div className="pb-2">
+                                        <div className={`font-['SoleiiBold'] text-sm ${data.goodOrNot == "GOOD PRODUCT" ? "text-lime-500" : "text-red-600" } leading-none tracking-wide`}>
+                                            {data.goodOrNot}
                                         </div>
                                     </div>
 
-                                    <div className="h-20">
+                                    <div className="pb-3">
                                         <a href="#">
-                                            <h5 class="font-['SoleiiBold'] mb-2 text-base text-gray-900">{data.title}</h5>
+                                            <h5 className="h-16 font-['SoleiiBold'] mb-2 text-base text-gray-900 text-ellipsis overflow-hidden ...">{data.title}</h5>
                                         </a>
                                     </div>
 
-                                    <p class="h-20 mb-3 text-sm text-gray-900">{data.message}</p>
+                                    <p className="h-20 mb-3 text-sm text-gray-900 text-ellipsis overflow-hidden ...">{data.message}</p>
                                     
-                                    <div class="pt-3 pb-3">
-                                        <div class="flex items-center">
-                                            <img class="w-6 h-6 rounded-full mr-4" src="/img/exploding-head.png" alt="Avatar of Jonathan Reinink" />
-                                            <div class="text-sm">
-                                                <p class="text-sm text-gray-900">Jonathan Reinink</p>
-                                                <p class="text-sm text-gray-900">Aug 18</p>
+                                    <div className="pt-3 pb-3">
+                                        <div className="flex items-center">
+                                            <img className="w-6 h-6 rounded-full mr-4" src="/img/exploding-head.png" alt="Avatar of Jonathan Reinink" />
+                                            <div className="text-sm">
+                                                <p className="text-sm text-gray-900">{data.username}</p>
+                                                <p className="text-sm text-gray-900">{data.createdAt}</p>
                                             </div>
                                         </div>
                                     </div>
-
-                                
-                                    
+    {/* setData ----    */}
                                     <div className="flex flex-row-reverse">
                                         <a 
-                                            onClick={() => setData(data.nameProduct, data.aboutProduct, data.brandProduct, data.choice, data.title, data.message)}
-                                            href={`/review/${data.id}`}
-                                            class="inline-flex items-center py-2 px-3 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                                            onClick={() => setData(setApiData)}
+                                            href={`/review/${data._id}`}
+                                            className="inline-flex items-center py-2 px-3 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
                                         >
                                             Read more
-                                            <svg class="ml-2 -mr-1 w-4 h-4" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+                                            <svg className="ml-2 -mr-1 w-4 h-4" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clipRule="evenodd"></path></svg>
                                         </a>
                                     </div>
 
@@ -102,7 +98,6 @@ const ProductCardAxios = () => {
                     
                 )
             })}
-
 
         </div>
     )

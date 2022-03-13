@@ -1,44 +1,48 @@
-import {useState, useEffect} from "react";
+import {useState, useEffect, useContext} from "react";
 import axios from 'axios';
-
-import Link from 'next/link';
+import { Context } from "../context/Context";
 
 export default function SubmitReview() {
-    const [nameProduct, setNameProduct] = useState('')
-    const [aboutProduct, setAboutProduct] = useState('')
-    const [brandProduct, setBrandProduct] = useState('')
-    // const [good, setGood] = useState('')
-    // const [bad, setBad] = useState('')
-    const [choice, setChoice] = useState('')
+    const [realName, setrealName] = useState('')
+    const [typeOrCategory, setTypeOrCategory] = useState('')
+    const [brandOrCompany, setBrandOrCompany] = useState('')
+    const [goodOrNot, setGoodOrNot] = useState('')
     const [title, setTitle] = useState('')
     const [message, setMessage] = useState('')
-    // const [img, setImg] = useState('')
-    
-    const submit = () => {
-        // window.location.href = "/review/1"
+    const [file, setFile] = useState(null)
+    const { user } = useContext(Context)
 
-        console.log(nameProduct)
-        console.log(aboutProduct)
-        console.log(brandProduct)
-        // console.log(good)
-        // console.log(bad)
-        console.log(choice)
-        console.log(title)
-        console.log(message)
-
-        // alert()
-
-        axios.post(`http://localhost:3100/product`, {
-            nameProduct,
-            aboutProduct,
-            brandProduct,
-            // good,
-            // bad,
-            choice,
+    const handleSubmit = async (e) => {
+        e.preventDefault()
+        const newPost = {
+            username: user.username,
+            realName,
+            typeOrCategory,
+            brandOrCompany,
+            goodOrNot,
             title,
             message,
-        })
-    }
+        };
+        if(file){
+            const data = new FormData()
+            const filename = Date.now() + file.name;
+            data.append("name", filename);
+            data.append("file", file);   
+            newPost.photo = filename;
+            try {
+                await axios.post("http://localhost:5001/api/upload", data);
+            } catch(err) {
+                console.log(err)
+            }         
+        }
+        try {
+            const res = await axios.post("http://localhost:5001/api/products", newPost);
+            window.location.replace("http://localhost:4000/review/" + res.data._id);
+        } catch(err) {
+            console.log(err)
+            console.log(newPost)
+        }
+    };
 
     return (
         
@@ -55,7 +59,7 @@ export default function SubmitReview() {
                     </div>
                 </div>
         
-                <div className="md:col-span-8">
+                <form className="md:col-span-8">
                     <div>
                         <div className="shadow-md sm:rounded-md sm:overflow-hidden">
                             <div className="bg-white space-y-6 sm:p-6">
@@ -65,8 +69,8 @@ export default function SubmitReview() {
                                         Product Real Name 
                                     </label>
                                     <input
-                                        onChange = {(e) => setNameProduct(e.target.value)} 
-                                        value = {nameProduct}
+                                        onChange = {(e) => setrealName(e.target.value)} 
+                                        value = {realName}
 
                                         type="text"
                                         name="product-name"
@@ -81,8 +85,8 @@ export default function SubmitReview() {
                                         Product Brand or Company Name
                                     </label>
                                     <input
-                                        onChange = {(e) => setBrandProduct(e.target.value)} 
-                                        value = {brandProduct}
+                                        onChange = {(e) => setBrandOrCompany(e.target.value)} 
+                                        value = {brandOrCompany}
                                     
                                         type="text"
                                         name="product-name"
@@ -97,8 +101,8 @@ export default function SubmitReview() {
                                         This product is about ( Types or Category ) 
                                     </label>
                                     <input
-                                        onChange = {(e) => setAboutProduct(e.target.value)} 
-                                        value = {aboutProduct}
+                                        onChange = {(e) => setTypeOrCategory(e.target.value)} 
+                                        value = {typeOrCategory}
 
                                         type="text"
                                         name="product-name"
@@ -120,7 +124,7 @@ export default function SubmitReview() {
                                     <div className="mt-2 space-y-4">
                                         <div className="flex items-center">
                                             <input
-                                                onChange = {(e) => setChoice(e.target.value)} 
+                                                onChange = {(e) => setGoodOrNot(e.target.value)} 
                                                 // value = {choice}
                                                 value = "GOOD PRODUCT"
                                                 // onclick="good"
@@ -136,7 +140,7 @@ export default function SubmitReview() {
                                         </div>
                                         <div className="flex items-center">
                                             <input
-                                                onChange = {(e) => setChoice(e.target.value)} 
+                                                onChange = {(e) => setGoodOrNot(e.target.value)} 
                                                 // value = {choice}
                                                 value = "BAD PRODUCT"
                                                 // onclick="bad"
@@ -200,33 +204,53 @@ export default function SubmitReview() {
                                 <div>
                                     <label className="block text-sm font-medium text-gray-700">Cover photo</label>
                                     <div className="mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-md">
-                                        <div className="space-y-1 text-center">
-                                            <svg
-                                                className="mx-auto h-12 w-12 text-gray-400"
-                                                stroke="currentColor"
-                                                fill="none"
-                                                viewBox="0 0 48 48"
-                                                aria-hidden="true"
-                                            >
-                                                <path
-                                                d="M28 8H12a4 4 0 00-4 4v20m32-12v8m0 0v8a4 4 0 01-4 4H12a4 4 0 01-4-4v-4m32-4l-3.172-3.172a4 4 0 00-5.656 0L28 28M8 32l9.172-9.172a4 4 0 015.656 0L28 28m0 0l4 4m4-24h8m-4-4v8m-12 4h.02"
-                                                strokeWidth={2}
-                                                strokeLinecap="round"
-                                                strokeLinejoin="round"
-                                                />
-                                            </svg>
-                                            <div className="flex text-sm text-gray-600">
-                                            <label
-                                                htmlFor="file-upload"
-                                                className="relative cursor-pointer bg-white rounded-md font-medium text-indigo-600 hover:text-indigo-500 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-indigo-500"
-                                            >
-                                                <span>Upload a file</span>
-                                                <input id="file-upload" name="file-upload" type="file" className="sr-only" />
-                                            </label>
-                                            <p className="pl-1">or drag and drop</p>
-                                            </div>
-                                            <p className="text-xs text-gray-500">PNG, JPG, GIF up to 10MB</p>
-                                        </div>
+                                    <div>
+                                        {
+                                            file ? (
+                                                <div>
+                                                    { file && 
+                                                        <img 
+                                                            className="rounded-xl object-cover h-80 w-full"
+                                                            src={URL.createObjectURL(file)}
+                                                            alt=""
+                                                        />
+                                                    }
+                                                </div>
+                                                
+                                            ) : (
+                                                <div className="space-y-1 text-center">
+                                                    <svg
+                                                        className="mx-auto h-12 w-12 text-gray-400"
+                                                        stroke="currentColor"
+                                                        fill="none"
+                                                        viewBox="0 0 48 48"
+                                                        aria-hidden="true"
+                                                    >
+                                                        <path
+                                                        d="M28 8H12a4 4 0 00-4 4v20m32-12v8m0 0v8a4 4 0 01-4 4H12a4 4 0 01-4-4v-4m32-4l-3.172-3.172a4 4 0 00-5.656 0L28 28M8 32l9.172-9.172a4 4 0 015.656 0L28 28m0 0l4 4m4-24h8m-4-4v8m-12 4h.02"
+                                                        strokeWidth={2}
+                                                        strokeLinecap="round"
+                                                        strokeLinejoin="round"
+                                                        />
+                                                    </svg>
+                                                    <div className="flex text-sm text-gray-600">
+                                                    <label
+                                                        htmlFor="file-upload"
+                                                        className="relative cursor-pointer bg-white rounded-md font-medium text-indigo-600 hover:text-indigo-500 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-indigo-500"
+                                                    >
+                                                        <span>Upload a file</span>
+                                                        <input id="file-upload" name="file-upload" type="file" className="sr-only" 
+                                                            onChange = {(e) => setFile(e.target.files[0])}    
+                                                        />
+                                                    </label>
+
+                                                    <p className="pl-1">or drag and drop</p>
+                                                    </div>
+                                                    <p className="text-xs text-gray-500">PNG, JPG, GIF up to 10MB</p>
+                                                </div>
+                                            )
+                                        }
+                                    </div>
                                     </div>
                                 </div>
 
@@ -257,28 +281,20 @@ export default function SubmitReview() {
 
                             </div>
 
-                            
-
                             <div className="px-4 py-3 bg-gray-100 text-right sm:px-6">
-
                                 <button
-
-                                    onClick={submit}
-                                    type="button"
+                                    onClick={handleSubmit}
+                                    type="submit"
                                     className="w-40 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-base font-bold rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                                 >
                                     Post your review
-                                </button>
-
-                                
+                                </button>                                
                             </div>
-
-                            
 
                         </div>
 
                     </div>
-                </div>
+                </form>
             </div>
     
         </div>

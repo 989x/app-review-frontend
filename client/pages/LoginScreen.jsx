@@ -1,16 +1,33 @@
 import { LockClosedIcon } from '@heroicons/react/solid'
+import axios from 'axios'
 
-export default function Example() {
+import { useContext, useRef } from 'react'
+import { Context } from '../context/Context'
+
+export default function Example() { 
+
+    const userRef = useRef()
+    const passwordRef = useRef()
+    const {  user, dispatch, isFetching } = useContext(Context)
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        dispatch({type: "LOGIN_START"})
+        try {
+            const res = await axios.post("http://localhost:5001/api/auth/login", {
+                username: userRef.current.value,
+                password: passwordRef.current.value,
+            })
+            dispatch({ type: "LOGIN_SUCCESS", payload: res.data });
+        } catch(err) {
+            dispatch({ type: "LOGIN_FAILURE" });
+        }
+    }
+    console.log(user);
+    console.log(dispatch);
+
   return (
-    <>
-      {/*
-        This example requires updating your template:
-
-        ```
-        <html class="h-full bg-gray-50">
-        <body class="h-full">
-        ```
-      */}
+    <div>
         <div className="min-h-full flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
             <div className="max-w-md w-full space-y-8">
 
@@ -29,22 +46,24 @@ export default function Example() {
                     </p>
                 </div>
 
-                <form className="mt-8 space-y-4 border p-6 rounded-lg" action="#" method="POST">
+                <form className="mt-8 space-y-4 border p-6 rounded-lg" action="#" method="POST" onSubmit={handleSubmit}>
                     <input type="hidden" name="remember" defaultValue="true" />
                         <div className="rounded-md shadow-sm -space-y-px">
                             <div className="pb-8">
-                                <h2>Email address</h2>
-                                <label htmlFor="email-address" className="sr-only">
-                                    Email address
+                                <h2>username</h2>
+                                <label htmlFor="username" className="sr-only">
+                                    username
                                 </label>
                                 <input
-                                    id="email-address"
-                                    name="email"
-                                    type="email"
-                                    autoComplete="email"
+                                    id="username"
+                                    name="username"
+                                    type="username"
+                                    autoComplete="username"
                                     required
                                     className="appearance-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
-                                    placeholder="Email address"
+                                    placeholder="username..."
+
+                                    ref = {userRef}
                                 />
                             </div>
 
@@ -60,7 +79,9 @@ export default function Example() {
                                     autoComplete="current-password"
                                     required
                                     className="appearance-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
-                                    placeholder="Password"
+                                    placeholder="Password..."
+
+                                    ref = {passwordRef}
                                 />
                             </div>
                         </div>
@@ -100,6 +121,6 @@ export default function Example() {
                 </form>
             </div>
         </div>
-    </>
+    </div>
   )
 }
