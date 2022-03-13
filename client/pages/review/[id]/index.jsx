@@ -61,7 +61,9 @@ export default function Example() {
     const onDelete = () => {
 
         if(window.confirm('Do you want to delete')){
-            axios.delete(`http://localhost:5000/api/products/${router.query.id}`), window.location.href="http://localhost:4000/";
+            axios.delete(`http://localhost:5001/api/products/${router.query.id}`, {data: {username: user.username}})
+            , window.location.href="http://localhost:4000/";
+
             // .get(() => {
             //     getData();
             // })
@@ -171,7 +173,7 @@ export default function Example() {
                                     >
                                         Edit
                                     </a>
-            {/* delete ------------- */}
+
                                     <a 
                                         // href="/"
                                         className="bg-red-500 hover:bg-red-800 text-white font-bold py-2 px-4 rounded"
@@ -179,7 +181,6 @@ export default function Example() {
                                     >
                                         Delete
                                     </a>
-            {/* delete ------------- */}
                                 </div>
                             </div>
 

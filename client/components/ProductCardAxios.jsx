@@ -54,19 +54,19 @@ const ProductCardAxios = () => {
                                         </a>
                                     </div>
 
-                                    <div className="pb-4">
+                                    <div className="pb-2">
                                         <div className={`font-['SoleiiBold'] text-sm ${data.goodOrNot == "GOOD PRODUCT" ? "text-lime-500" : "text-red-600" } leading-none tracking-wide`}>
                                             {data.goodOrNot}
                                         </div>
                                     </div>
 
-                                    <div className="h-20">
+                                    <div className="pb-3">
                                         <a href="#">
-                                            <h5 className="font-['SoleiiBold'] mb-2 text-base text-gray-900">{data.title}</h5>
+                                            <h5 className="h-16 font-['SoleiiBold'] mb-2 text-base text-gray-900 text-ellipsis overflow-hidden ...">{data.title}</h5>
                                         </a>
                                     </div>
 
-                                    <p className="h-20 mb-3 text-sm text-gray-900">{data.message}</p>
+                                    <p className="h-20 mb-3 text-sm text-gray-900 text-ellipsis overflow-hidden ...">{data.message}</p>
                                     
                                     <div className="pt-3 pb-3">
                                         <div className="flex items-center">
