@@ -54,7 +54,6 @@ const ProductCardAxios = () => {
                                         </a>
                                     </div>
 
-
                                     <div className="pb-4">
                                         <div className={`font-['SoleiiBold'] text-sm ${data.goodOrNot == "GOOD PRODUCT" ? "text-lime-500" : "text-red-600" } leading-none tracking-wide`}>
                                             {data.goodOrNot}

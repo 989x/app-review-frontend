@@ -1,9 +1,10 @@
 import CommentForm from "../../../components/Post/CommentForm"
 import CommentOnPost from "../../../components/Post/CommentOnPost"
   
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import {useRouter} from 'next/router'
 import axios from "axios";
+import { Context } from "../../../context/Context";
 
 export default function Example() {
 
@@ -20,11 +21,12 @@ export default function Example() {
     const [photo, setPhoto] = useState('')
     const [_id, setID] = useState(null);
 
-//------------//------------//------------//------------//------------//------------
+    const { user } = useContext(Context);
+
+//------------------------------------------------------------------------------------------------
 
     // for update
 
-    // const [apiData, setApiData] = useState([]);
     const router = useRouter()
     useEffect(() => {
         if (router.query.id) {
@@ -52,26 +54,21 @@ export default function Example() {
         }
     }, [router.query.id])
 
-    // for update
-
-//------------//------------//------------//------------//------------//------------
+//------------------------------------------------------------------------------------------------
 
     // for delete
 
     const onDelete = () => {
 
         if(window.confirm('Do you want to delete')){
-            axios.delete(`http://localhost:3100/product/${router.query.id}`), window.location.href="http://localhost:4000/";
+            axios.delete(`http://localhost:5000/api/products/${router.query.id}`), window.location.href="http://localhost:4000/";
             // .get(() => {
             //     getData();
             // })
         }
     }
 
-    // for delete
-
     return (
-        
         <div className="bg-white">
             
             <div>
@@ -108,7 +105,6 @@ export default function Example() {
 
                     {/* item img */}
                     <div>
-
                         <div className="grid grid-col-2 sm:gap-6 lg:gap-8 justify-items-center">
 
                             <img
@@ -150,7 +146,6 @@ export default function Example() {
                                 />
                             </div>
                         </div>
-
                     </div>
 
 
@@ -158,35 +153,37 @@ export default function Example() {
                     {/* item detail */}
                     <div className="grid grid-col-2 lg:gap-4">
 
-                        <div className="p-6 max-w-7xl">
-                            <div className="flex space-x-6 justify-end">
-                                <div className="pt-2 pr-4 font-bold text-xl">
-                                    About your review
+                        {username === user?.username && (
+
+                            <div className="p-6 max-w-7xl">
+                                <div className="flex space-x-6 justify-end">
+                                    <div className="pt-2 pr-4 font-bold text-xl">
+                                        About your review
+                                    </div>
+                                    <a
+                                        href={`/review/${router.query.id}/update`}
+                                        className="inline-flex items-center py-2 px-3 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+            // this here ---------------
+                                        // onClick={ setData(nameProduct, aboutProduct, brandProduct, choice, title, message)}
+                                        
+                                        // onClick={() => test()}
+            // this here ---------------
+                                    >
+                                        Edit
+                                    </a>
+            {/* delete ------------- */}
+                                    <a 
+                                        // href="/"
+                                        className="bg-red-500 hover:bg-red-800 text-white font-bold py-2 px-4 rounded"
+                                        onClick={() => onDelete(router.query.id)}
+                                    >
+                                        Delete
+                                    </a>
+            {/* delete ------------- */}
                                 </div>
-                                <a
-                                    href={`/review/${router.query.id}/update`}
-                                    className="inline-flex items-center py-2 px-3 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-                                    // for update
-        // this here ---------------
-                                    // onClick={ setData(nameProduct, aboutProduct, brandProduct, choice, title, message)}
-                                    
-                                    // onClick={() => test()}
-        // this here ---------------
-                                    // for update
-                                >
-                                    Edit
-                                </a>
-        {/* delete ------------- */}
-                                <a 
-                                    // href="/"
-                                    className="bg-red-500 hover:bg-red-800 text-white font-bold py-2 px-4 rounded"
-                                    onClick={() => onDelete(router.query.id)}
-                                >
-                                    Delete
-                                </a>
-        {/* delete ------------- */}
                             </div>
-                        </div>
+
+                        )}
 
                         <div className="p-6 max-w-7xl rounded-lg shadow-md">
 

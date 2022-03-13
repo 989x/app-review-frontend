@@ -1,46 +1,23 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import {useRouter} from 'next/router'
 import axios from "axios";
-
-import Link from 'next/link';
+import { Context } from '../../../context/Context';
 
 export default function UpdateReview() {
-    const [nameProduct, setNameProduct] = useState('')
-    const [aboutProduct, setAboutProduct] = useState('')
-    const [brandProduct, setBrandProduct] = useState('')
-    // const [good, setGood] = useState('')
-    // const [bad, setBad] = useState('')
-    const [choice, setChoice] = useState('')
+
+    const { user } = useContext(Context)
+
+    const PF = "http://localhost:5001/images/";
+
+    const [realName, setRealName] = useState('')
+    const [typeOrCategory, setTypeOrCategory] = useState('')
+    const [brandOrCompany, setBrandOrCompany] = useState('')
+    const [goodOrNot, setGoodOrNot] = useState('')
     const [title, setTitle] = useState('')
     const [message, setMessage] = useState('')
-    // const [img, setImg] = useState('')
-    const [id, setID] = useState(null);
-    
-    const submit = () => {
-        // window.location.href = "/review/1"
 
-        console.log(nameProduct)
-        console.log(aboutProduct)
-        console.log(brandProduct)
-        // console.log(good)
-        // console.log(bad)
-        console.log(choice)
-        console.log(title)
-        console.log(message)
-
-        // alert()
-
-        axios.put(`http://localhost:3100/product/${id}`, {
-            nameProduct,
-            aboutProduct,
-            brandProduct,
-            // good,
-            // bad,
-            choice,
-            title,
-            message,
-        })
-    }
+    const [photo, setPhoto] = useState('')
+    const [_id, setID] = useState(null);
 
     // get data
 
@@ -48,39 +25,35 @@ export default function UpdateReview() {
     useEffect(() => {
         if (router.query.id) {
 
-            axios.get(`http://localhost:3100/product/${router.query.id}`)
-            .then((getData) => {
-                console.log(getData.data.id)
-                setID(getData.data.id);
+            axios.get(`http://localhost:5001/api/products/${router.query.id}`)
 
-                setNameProduct(getData.data['nameProduct']);
-                setAboutProduct(getData.data['aboutProduct']);
-                setBrandProduct(getData.data['brandProduct']);
-                setChoice(getData.data.choice);
+            .then((getData) => {
+                console.log(getData.data._id)
+
+                setID(getData.data._id);
+
+                setRealName(getData.data['realName']);
+                setTypeOrCategory(getData.data['typeOrCategory']);
+                setBrandOrCompany(getData.data['brandOrCompany']);
+                setGoodOrNot(getData.data.goodOrNot);
                 setTitle(getData.data.title);
                 setMessage(getData.data.message);
+
+                setPhoto(getData.data.photo)
                 console.log(getData.data)
             })
-            console.log(router.query.id)
+            console.log(router.query._id)
         }
     }, [router.query.id])
-
-    // get data
 
     // update
 
     const sendDataToAPI = () => {
-        axios.put(`http://localhost:3100/product/${router.query.id}`, {
-            nameProduct,
-            aboutProduct,
-            brandProduct,
-            choice,
-            title,
-            message
+        axios.put(`http://localhost:5001/api/products/${router.query.id}`, {
+            username: user.username, realName, typeOrCategory, brandOrCompany, goodOrNot, title, message,
         })
+        window.location.replace(`/review/${router.query.id}/`);
     }
-
-    //
 
     return (
         
@@ -107,8 +80,8 @@ export default function UpdateReview() {
                                         Product Real Name 
                                     </label>
                                     <input
-                                        onChange = {(e) => setNameProduct(e.target.value)} 
-                                        value = {nameProduct}
+                                        onChange = {(e) => setRealName(e.target.value)} 
+                                        value = {realName}
 
                                         type="text"
                                         name="product-name"
@@ -123,8 +96,8 @@ export default function UpdateReview() {
                                         Product Brand or Company Name
                                     </label>
                                     <input
-                                        onChange = {(e) => setBrandProduct(e.target.value)} 
-                                        value = {brandProduct}
+                                        onChange = {(e) => setBrandOrCompany(e.target.value)} 
+                                        value = {brandOrCompany}
                                     
                                         type="text"
                                         name="product-name"
@@ -139,8 +112,8 @@ export default function UpdateReview() {
                                         This product is about ( Types or Category ) 
                                     </label>
                                     <input
-                                        onChange = {(e) => setAboutProduct(e.target.value)} 
-                                        value = {aboutProduct}
+                                        onChange = {(e) => setTypeOrCategory(e.target.value)} 
+                                        value = {typeOrCategory}
 
                                         type="text"
                                         name="product-name"
@@ -162,7 +135,7 @@ export default function UpdateReview() {
                                     <div className="mt-2 space-y-4">
                                         <div className="flex items-center">
                                             <input
-                                                onChange = {(e) => setChoice(e.target.value)} 
+                                                onChange = {(e) => setGoodOrNot(e.target.value)} 
                                                 // value = {choice}
                                                 value = "GOOD PRODUCT"
                                                 // onclick="good"
@@ -178,7 +151,7 @@ export default function UpdateReview() {
                                         </div>
                                         <div className="flex items-center">
                                             <input
-                                                onChange = {(e) => setChoice(e.target.value)} 
+                                                onChange = {(e) => setGoodOrNot(e.target.value)} 
                                                 // value = {choice}
                                                 value = "BAD PRODUCT"
                                                 // onclick="bad"
@@ -242,48 +215,62 @@ export default function UpdateReview() {
                                 <div>
                                     <label className="block text-sm font-medium text-gray-700">Cover photo</label>
                                     <div className="mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-md">
-                                        <div className="space-y-1 text-center">
-                                            <svg
-                                                className="mx-auto h-12 w-12 text-gray-400"
-                                                stroke="currentColor"
-                                                fill="none"
-                                                viewBox="0 0 48 48"
-                                                aria-hidden="true"
-                                            >
-                                                <path
-                                                d="M28 8H12a4 4 0 00-4 4v20m32-12v8m0 0v8a4 4 0 01-4 4H12a4 4 0 01-4-4v-4m32-4l-3.172-3.172a4 4 0 00-5.656 0L28 28M8 32l9.172-9.172a4 4 0 015.656 0L28 28m0 0l4 4m4-24h8m-4-4v8m-12 4h.02"
-                                                strokeWidth={2}
-                                                strokeLinecap="round"
-                                                strokeLinejoin="round"
-                                                />
-                                            </svg>
-                                            <div className="flex text-sm text-gray-600">
-                                            <label
-                                                htmlFor="file-upload"
-                                                className="relative cursor-pointer bg-white rounded-md font-medium text-indigo-600 hover:text-indigo-500 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-indigo-500"
-                                            >
-                                                <span>Upload a file</span>
-                                                <input id="file-upload" name="file-upload" type="file" className="sr-only" />
-                                            </label>
-                                            <p className="pl-1">or drag and drop</p>
+                                    {
+                                        photo ? (
+                                            <div>
+                                                { photo && 
+                                                    <img 
+                                                        className="rounded-xl object-cover h-80 w-full"
+                                                        src={PF + photo}
+                                                        alt=""
+                                                    />
+                                                }
                                             </div>
-                                            <p className="text-xs text-gray-500">PNG, JPG, GIF up to 10MB</p>
-                                        </div>
+                                            
+                                        ) : (
+                                            <div className="space-y-1 text-center">
+                                                <svg
+                                                    className="mx-auto h-12 w-12 text-gray-400"
+                                                    stroke="currentColor"
+                                                    fill="none"
+                                                    viewBox="0 0 48 48"
+                                                    aria-hidden="true"
+                                                >
+                                                    <path
+                                                    d="M28 8H12a4 4 0 00-4 4v20m32-12v8m0 0v8a4 4 0 01-4 4H12a4 4 0 01-4-4v-4m32-4l-3.172-3.172a4 4 0 00-5.656 0L28 28M8 32l9.172-9.172a4 4 0 015.656 0L28 28m0 0l4 4m4-24h8m-4-4v8m-12 4h.02"
+                                                    strokeWidth={2}
+                                                    strokeLinecap="round"
+                                                    strokeLinejoin="round"
+                                                    />
+                                                </svg>
+                                                <div className="flex text-sm text-gray-600">
+                                                <label
+                                                    htmlFor="file-upload"
+                                                    className="relative cursor-pointer bg-white rounded-md font-medium text-indigo-600 hover:text-indigo-500 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-indigo-500"
+                                                >
+                                                    <span>Upload a file</span>
+                                                    <input id="file-upload" name="file-upload" type="file" className="sr-only" 
+                                                        onChange = {(e) => setFile(e.target.files[0])}    
+                                                    />
+                                                </label>
+
+                                                <p className="pl-1">or drag and drop</p>
+                                                </div>
+                                                <p className="text-xs text-gray-500">PNG, JPG, GIF up to 10MB</p>
+                                            </div>
+                                        )
+                                    }
                                     </div>
                                 </div>
 
 
-
-
                             </div>
-
-                            
 
                             <div className="px-4 py-3 bg-gray-100 text-right sm:px-6">
 
                                 <a
-                                    href={`/review/${router.query.id}/`}
                                     onClick={sendDataToAPI}
+                                    // href={`/review/${router.query.id}/`}
                                     type="button"
                                     className="w-40 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-base font-bold rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                                 >
