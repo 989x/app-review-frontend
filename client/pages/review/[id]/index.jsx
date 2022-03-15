@@ -115,7 +115,7 @@ export default function Example() {
                             className="bg-gray-100 rounded w-11/12"
                             />
 
-                            <div className="flex sm:gap-4 justify-around">
+                            {/* <div className="flex sm:gap-4 justify-around">
                                 <img 
                                 width={100} height={100}
                                 src="/img/graphics-card.webp"
@@ -146,7 +146,7 @@ export default function Example() {
                                 alt="Walnut card tray filled with cards and card angled in dedicated groove."
                                 className="bg-gray-100 rounded object-cover h-full w-24"
                                 />
-                            </div>
+                            </div> */}
                         </div>
                     </div>
 

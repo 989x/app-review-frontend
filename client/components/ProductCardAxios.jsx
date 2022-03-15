@@ -9,7 +9,6 @@ const ProductCardAxios = () => {
     const [apiData, setApiData] = useState([]);
 
     useEffect(() => {
-        // axios.get(`http://localhost:3100/product`)
         axios.get(`http://localhost:5001/api/products`)
         .then((getData) => {
             setApiData(getData.data);
