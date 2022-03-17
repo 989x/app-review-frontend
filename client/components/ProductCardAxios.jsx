@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import styles from "../styles/ProductList.module.css";
 
 import axios from "axios";
+import { Context } from '../context/Context';
 
 const ProductCardAxios = () => {
 
@@ -18,6 +19,8 @@ const ProductCardAxios = () => {
     const setData = (_id, username, realName, typeOrCategory, goodOrNot, title, message, createdAt, photo) => {
         console.log(_id);
         localStorage.setItem('username', username)
+        localStorage.setItem('profilePic', profilePic)
+        
         localStorage.setItem('realName', realName)
         localStorage.setItem('typeOrCategory', typeOrCategory) 
         // localStorage.setItem('brandOrCompany', brandOrCompany) 
@@ -69,7 +72,7 @@ const ProductCardAxios = () => {
                                     
                                     <div className="pt-3 pb-3">
                                         <div className="flex items-center">
-                                            <img className="w-6 h-6 rounded-full mr-4" src="/img/exploding-head.png" alt="Avatar of Jonathan Reinink" />
+                                            <img className="w-9 h-9 rounded-full mr-4" src={PF + data.profilePic} alt="Avatar of Jonathan Reinink" />
                                             <div className="text-sm">
                                                 <p className="text-sm text-gray-900">{data.username}</p>
                                                 <p className="text-sm text-gray-900">{data.createdAt}</p>

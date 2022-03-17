@@ -3,7 +3,7 @@ import axios from 'axios';
 import { Context } from "../context/Context";
 
 export default function SubmitReview() {
-    const [realName, setrealName] = useState('')
+    const [realName, setRealName] = useState('')
     const [typeOrCategory, setTypeOrCategory] = useState('')
     const [brandOrCompany, setBrandOrCompany] = useState('')
     const [goodOrNot, setGoodOrNot] = useState('')
@@ -16,6 +16,7 @@ export default function SubmitReview() {
         e.preventDefault()
         const newPost = {
             username: user.username,
+            profilePic: user.profilePic,
             realName,
             typeOrCategory,
             brandOrCompany,
@@ -69,7 +70,7 @@ export default function SubmitReview() {
                                         Product Real Name 
                                     </label>
                                     <input
-                                        onChange = {(e) => setrealName(e.target.value)} 
+                                        onChange = {(e) => setRealName(e.target.value)} 
                                         value = {realName}
 
                                         type="text"
