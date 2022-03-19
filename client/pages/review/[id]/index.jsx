@@ -1,4 +1,4 @@
-  import React, { useState, useEffect, useContext } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import {useRouter} from 'next/router'
 import axios from "axios";
 import { Context } from "../../../context/Context";
@@ -25,10 +25,8 @@ export default function Example() {
 
     const { user } = useContext(Context);
 
-//------------------------------------------------------------------------------------------------
-
+    //------------------------------------------------------------------------------------------------
     // for update
-
     const router = useRouter()
     useEffect(() => {
         if (router.query.id) {
@@ -58,27 +56,44 @@ export default function Example() {
         }
     }, [router.query.id])
 
-//------------------------------------------------------------------------------------------------
-
+    //------------------------------------------------------------------------------------------------
     // for delete
-
     const onDelete = () => {
-
         if(window.confirm('Do you want to delete')){
             axios.delete(`http://localhost:5001/api/products/${router.query.id}`, {data: {username: user.username}})
             , window.location.href="http://localhost:4000/";
-
             // .get(() => {
             //     getData();
             // })
         }
     }
 
+    //------------------------------------------------------------------------------------------------
+    // Comment Product
+    const [comment, setComment] = useState('')
+
+    const handleComment = async(e) => {
+        e.preventDefault()
+        try {
+            const commment = await axios.post(`http://localhost:5001/api/products/${router.query.id}/comments/create`,{
+                comment,
+                // comment,
+                // product_id: product_id,
+                product_id: _id,
+                // user_id: req.body.user_id
+                user_id: user._id
+            })
+            console.log(commment)
+        } catch(err) {
+            console.log(err)
+        }
+    }
+
+    //------------------------------------------------------------------------------------------------
+
     return (
         <div className="bg-white">
-            
             <div>
-
 
                 {/* nav bar item */}
                 <div className="max-w-2xl mx-auto px-4 grid items-center grid-cols-1 gap-y-16 gap-x-8 sm:px-6 sm:pt-6 sm:pb-4 lg:max-w-screen-2xl lg:px-6 lg:grid-cols-2">
@@ -154,8 +169,6 @@ export default function Example() {
                         </div>
                     </div>
 
-
-                
                     {/* item detail */}
                     <div className="grid grid-col-2 lg:gap-4">
 
@@ -282,16 +295,23 @@ export default function Example() {
                     </div>
 
                 </div>
-
-
-                {/* comment */}
+                
+        {/* comment ----------------------------------- ----------------------------------- -----------------------------------  */}
                 
                 <div class="max-w-2xl mx-auto px-4 grid items-center grid-cols-1 gap-y-16 gap-x-8 sm:px-6 sm:pb-16 lg:max-w-screen-2xl lg:px-6 lg:grid-cols-2">
                 {/* <div class="flex mx-auto items-center justify-center shadow-lg mb-4 max-w-xl"> */}
                     <div class="flex flex-wrap mx-3 mb-6">
                         <h2 class="px-4 pt-3 pb-2 text-gray-800 text-lg">Add a new comment</h2>
                         <div class="w-full md:w-full px-3 mb-2 mt-2">
-                            <textarea class="bg-gray-100 rounded border border-gray-400 leading-normal resize-none w-full h-20 py-2 px-3 font-medium placeholder-gray-700 focus:outline-none focus:bg-white" name="body" placeholder='Type Your Comment' required></textarea>
+                            <textarea 
+                                class="bg-gray-100 rounded border border-gray-400 leading-normal resize-none w-full h-20 py-2 px-3 font-medium placeholder-gray-700 focus:outline-none focus:bg-white" 
+                                name="body" 
+                                placeholder='Type Your Comment' 
+                                required
+
+                                onChange = {(e) => setComment(e.target.value)}
+                                value = {comment}
+                            />
                         </div>
                         <div class="w-full md:w-full flex items-start  px-3">
                             <div class="flex items-start w-1/2 text-gray-700 px-2 mr-auto">
@@ -301,7 +321,13 @@ export default function Example() {
                             <p class="text-xs md:text-sm pt-px">Some HTML is okay.</p>
                             </div>
                             <div class="-mr-1">
-                            <input type='submit' class="bg-white text-gray-700 font-medium py-1 px-4 border border-gray-400 rounded-lg tracking-wide mr-1 hover:bg-gray-100" value='Post Comment'/>
+                            <input 
+                                type='submit' 
+                                class="bg-white text-gray-700 font-medium py-1 px-4 border border-gray-400 rounded-lg tracking-wide mr-1 hover:bg-gray-100" 
+                                value='Post Comment'
+
+                                onClick = {handleComment}
+                            />
                             </div>
                         </div>
                     </div>
