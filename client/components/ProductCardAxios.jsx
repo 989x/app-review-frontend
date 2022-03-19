@@ -16,8 +16,10 @@ const ProductCardAxios = () => {
         })
     }, [])
 
-    const setData = (_id, username, realName, typeOrCategory, goodOrNot, title, message, createdAt, photo) => {
+    const setData = (_id, username, realName, typeOrCategory, goodOrNot, title, message, createdAt, photo, productComment) => {
         console.log(_id);
+        // console.log(productComment);
+
         localStorage.setItem('username', username)
         localStorage.setItem('profilePic', profilePic)
         
@@ -29,6 +31,9 @@ const ProductCardAxios = () => {
         localStorage.setItem('message', message)
         localStorage.setItem('createdAt', createdAt) 
         localStorage.setItem('photo', photo) 
+
+        // new productComment
+        localStorage.setItem('productComment', productComment) 
     }
 
     return (
