@@ -10,9 +10,9 @@ const AboutScreen = () => {
                         <div className="">
                         <div className="inline-flex justify-center items-center rounded-full">
                             <div className="bg-black text-white font-semibold px-2 rounded-full m-1">
-                                75% SAVE
+                                Nowaday
                             </div>
-                            <p className="text-black px-2 ">For the Black Friday weekend .</p>
+                            <p className="text-black px-2 ">Leave a review about the product you have . . .</p>
                         </div>
                         </div>
                         <h1 className="font-['SoleiiBold'] lg:text-6xl pt-8 md:text-6xl text-4xl">

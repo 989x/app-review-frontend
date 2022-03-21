@@ -21,16 +21,30 @@ function Cardd(props) {
 
     // UPDATE Data
     const handleUpdate = async() => {
-        console.log("handleUpdate")
+        // console.log("handleUpdate")
+        // console.log("req.body.user_id : " + req.body.user_id)
+
         try {
             await axios.put(`http://localhost:5001/api/products/comments/${props.comment._id}/update`, {
                 user_id: props.comment.user._id,
-                // comment_id: props.comment._id,
                 comment: commentData,
             });
-            // console.log(test)
 
             setUpdateMode(false)
+        } catch(err) {
+            console.log(err)
+        }
+    }
+
+    // ----------------------------------- ----------------------------------- -----------------------------------
+    // DETELE Data
+    const handleDelete = async() => {
+        // console.log("comment_id : " + props.comment._id)
+        // console.log("user_id : " + props.comment.user._id)
+        
+        try {
+            await axios.delete(`http://localhost:5001/api/products/comments/${props.comment._id}/delete`);
+            // window.location.replace("/");
         } catch(err) {
             console.log(err)
         }
@@ -79,26 +93,28 @@ function Cardd(props) {
                 </div>
 
                 {props.comment.user.username === user?.username && ( 
-                    
                     <div>
-
                         {updateMode ? (
                             <div className="pt-6 max-w-7xl">
-                                <div className="flex space-x-2 justify-end">
+                                <div className="flex space-x-6 justify-end">
                                     <button 
                                         className="text-small py-2 px-2 rounded text-white bg-green-500 hover:bg-green-800" 
                                         onClick={handleUpdate}
                                     >
                                         Update
                                     </button>
+
+                                    <button 
+                                            className="text-small py-2 px-2 rounded text-white bg-red-500 hover:bg-red-800"
+                                            onClick={handleDelete}
+                                        >
+                                            Delete
+                                        </button>
                                 </div>
                             </div>
                         ) : (
                             <div className="pt-6 max-w-7xl">
                                 <div className="flex space-x-2 justify-end">
-                                    {/* <div className="pt-2 text-sm">
-                                        Your comment
-                                    </div> */}
                                     <div>
                                         <button
                                             // href={`/review/${}/update`}
@@ -107,12 +123,12 @@ function Cardd(props) {
                                         >
                                             Edit
                                         </button>
-                                        <button 
+                                        {/* <button 
                                             className="text-small py-2 px-2 rounded text-white bg-red-500 hover:bg-red-800"
-                                            onClick={() => onDelete(router.query.id)}
+                                            onClick={handleDelete}
                                         >
                                             Delete
-                                        </button>
+                                        </button> */}
                                     </div>
                                 </div>
                             </div>

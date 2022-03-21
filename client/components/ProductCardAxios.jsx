@@ -48,9 +48,18 @@ const ProductCardAxios = () => {
                             <div className="bg-white rounded-lg shadow-md">
 
                                 <div>
-                                    <a href="#">
-                                        <img className="rounded-t-lg object-cover h-36 w-full" src={PF + data.photo} alt="" />
-                                    </a>
+                                    {
+                                        data.photo ? (
+                                            <a href="#">
+                                                <img className="rounded-t-lg object-cover h-36 w-full" src={PF + data.photo} alt="" />
+                                            </a>
+                                        ) : 
+                                        (
+                                            <div>
+                                                
+                                            </div>
+                                        )
+                                    }
                                 </div>
 
                                 <div className="p-5">
@@ -69,7 +78,7 @@ const ProductCardAxios = () => {
 
                                     <div className="pb-3">
                                         <a href="#">
-                                            <h5 className="h-16 font-['SoleiiBold'] mb-2 text-base text-gray-900 text-ellipsis overflow-hidden ...">{data.title}</h5>
+                                            <h5 className="h-10 font-['SoleiiBold'] mb-2 text-base text-gray-900 text-ellipsis overflow-hidden ...">{data.title}</h5>
                                         </a>
                                     </div>
 
@@ -84,7 +93,7 @@ const ProductCardAxios = () => {
                                             </div>
                                         </div>
                                     </div>
-    {/* setData ----    */}
+                    {/* setData ----    */}
                                     <div className="flex flex-row-reverse">
                                         <a 
                                             onClick={() => setData(setApiData)}

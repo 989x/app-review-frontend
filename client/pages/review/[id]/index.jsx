@@ -348,7 +348,7 @@ export default function Example() {
 
 
 
-
+{/* 
                     <div class="mx-3 mb-6">
                         <h2 class="px-4 pt-3 pb-2 text-gray-800 text-lg">Add a new comment</h2>
                         <div class="w-full md:w-full px-3 mb-2 mt-2">
@@ -413,7 +413,7 @@ export default function Example() {
                             </div>
                         </div>
 
-                    </div>
+                    </div> */}
 
 
 
