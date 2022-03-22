@@ -83,6 +83,7 @@ export default function Example() {
                 // user_id: req.body.user_id
                 user_id: user._id
             })
+            window.location.reload()
             console.log(commment)
         } catch(err) {
             console.log(err)

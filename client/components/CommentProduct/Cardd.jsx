@@ -31,6 +31,7 @@ function Cardd(props) {
             });
 
             setUpdateMode(false)
+            window.location.reload()
         } catch(err) {
             console.log(err)
         }
@@ -44,7 +45,7 @@ function Cardd(props) {
         
         try {
             await axios.delete(`http://localhost:5001/api/products/comments/${props.comment._id}/delete`);
-            // window.location.replace("/");
+            window.location.reload()
         } catch(err) {
             console.log(err)
         }

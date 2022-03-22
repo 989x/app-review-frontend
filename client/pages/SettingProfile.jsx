@@ -65,7 +65,11 @@ export default function Example() {
                                     <div className="mt-1 flex items-center">
                                     <span className="inline-block h-28 w-28 rounded-full overflow-hidden bg-gray-100">
                                     
-                                        <img src={file ? URL.createObjectURL(file) : PF + user.profilePic} alt="" />
+                                        <img 
+                                            src={file ? URL.createObjectURL(file) : PF + user.profilePic} 
+
+                                            alt="" 
+                                        />
                                     </span>
                                     <input
                                         onChange={(e) => setFile(e.target.files[0])}

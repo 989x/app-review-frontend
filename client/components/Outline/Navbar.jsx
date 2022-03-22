@@ -91,11 +91,21 @@ function Navbar() {
               user ? (
                 <div>
                   <Link href="/SettingProfile">
-                    <img
-                      className="w-12 h-12 rounded-full object-cover cursor-pointer"
-                      src={PF + user.profilePic}
-                      alt=""
-                    />
+                    {
+                      user.profilePic ? (
+                        <img
+                          className="w-12 h-12 rounded-full object-cover cursor-pointer"
+                          src={PF + user.profilePic}
+                          alt=""
+                        />
+                      ) : (
+                        <img
+                        className="w-12 h-12 rounded-full object-cover cursor-pointer"
+                        src="img/brawl-stars-icon-clipart.png"
+                        alt=""
+                      />
+                      )
+                    }
                   </Link>
 
                 </div>

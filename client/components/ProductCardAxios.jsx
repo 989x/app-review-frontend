@@ -21,7 +21,7 @@ const ProductCardAxios = () => {
         // console.log(productComment);
 
         localStorage.setItem('username', username)
-        localStorage.setItem('profilePic', profilePic)
+        // localStorage.setItem('profilePic', profilePic)
         
         localStorage.setItem('realName', realName)
         localStorage.setItem('typeOrCategory', typeOrCategory) 
@@ -56,7 +56,7 @@ const ProductCardAxios = () => {
                                         ) : 
                                         (
                                             <div>
-                                                
+
                                             </div>
                                         )
                                     }
