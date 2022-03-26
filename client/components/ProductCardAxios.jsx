@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import styles from "../styles/ProductList.module.css";
 
 import axios from "axios";
+import { Context } from '../context/Context';
 
 const ProductCardAxios = () => {
 
@@ -9,16 +10,19 @@ const ProductCardAxios = () => {
     const [apiData, setApiData] = useState([]);
 
     useEffect(() => {
-        // axios.get(`http://localhost:3100/product`)
         axios.get(`http://localhost:5001/api/products`)
         .then((getData) => {
             setApiData(getData.data);
         })
     }, [])
 
-    const setData = (_id, username, realName, typeOrCategory, goodOrNot, title, message, createdAt, photo) => {
+    const setData = (_id, username, realName, typeOrCategory, goodOrNot, title, message, createdAt, photo, productComment) => {
         console.log(_id);
+        // console.log(productComment);
+
         localStorage.setItem('username', username)
+        // localStorage.setItem('profilePic', profilePic)
+        
         localStorage.setItem('realName', realName)
         localStorage.setItem('typeOrCategory', typeOrCategory) 
         // localStorage.setItem('brandOrCompany', brandOrCompany) 
@@ -27,6 +31,9 @@ const ProductCardAxios = () => {
         localStorage.setItem('message', message)
         localStorage.setItem('createdAt', createdAt) 
         localStorage.setItem('photo', photo) 
+
+        // new productComment
+        localStorage.setItem('productComment', productComment) 
     }
 
     return (
@@ -41,9 +48,18 @@ const ProductCardAxios = () => {
                             <div className="bg-white rounded-lg shadow-md">
 
                                 <div>
-                                    <a href="#">
-                                        <img className="rounded-t-lg object-cover h-36 w-full" src={PF + data.photo} alt="" />
-                                    </a>
+                                    {
+                                        data.photo ? (
+                                            <a href="#">
+                                                <img className="rounded-t-lg object-cover h-36 w-full" src={PF + data.photo} alt="" />
+                                            </a>
+                                        ) : 
+                                        (
+                                            <div>
+
+                                            </div>
+                                        )
+                                    }
                                 </div>
 
                                 <div className="p-5">
@@ -62,22 +78,22 @@ const ProductCardAxios = () => {
 
                                     <div className="pb-3">
                                         <a href="#">
-                                            <h5 className="h-16 font-['SoleiiBold'] mb-2 text-base text-gray-900 text-ellipsis overflow-hidden ...">{data.title}</h5>
+                                            <h5 className="h-11 font-['SoleiiBold'] mb-2 text-base text-gray-900 text-ellipsis overflow-hidden ...">{data.title}</h5>
                                         </a>
                                     </div>
 
-                                    <p className="h-20 mb-3 text-sm text-gray-900 text-ellipsis overflow-hidden ...">{data.message}</p>
+                                    <p className="h-20 mb-1 text-sm text-gray-900 text-ellipsis overflow-hidden ...">{data.message}</p>
                                     
                                     <div className="pt-3 pb-3">
                                         <div className="flex items-center">
-                                            <img className="w-6 h-6 rounded-full mr-4" src="/img/exploding-head.png" alt="Avatar of Jonathan Reinink" />
+                                            <img className="w-9 h-9 rounded-full mr-4" src={PF + data.profilePic} alt="Avatar of Jonathan Reinink" />
                                             <div className="text-sm">
                                                 <p className="text-sm text-gray-900">{data.username}</p>
                                                 <p className="text-sm text-gray-900">{data.createdAt}</p>
                                             </div>
                                         </div>
                                     </div>
-    {/* setData ----    */}
+                    {/* setData ----    */}
                                     <div className="flex flex-row-reverse">
                                         <a 
                                             onClick={() => setData(setApiData)}

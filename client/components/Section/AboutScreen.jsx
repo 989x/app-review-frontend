@@ -10,9 +10,9 @@ const AboutScreen = () => {
                         <div className="">
                         <div className="inline-flex justify-center items-center rounded-full">
                             <div className="bg-black text-white font-semibold px-2 rounded-full m-1">
-                                75% SAVE
+                                Nowaday
                             </div>
-                            <p className="text-black px-2 ">For the Black Friday weekend .</p>
+                            <p className="text-black px-2 ">Leave a review about the product you have . . .</p>
                         </div>
                         </div>
                         <h1 className="font-['SoleiiBold'] lg:text-6xl pt-8 md:text-6xl text-4xl">
@@ -473,9 +473,9 @@ const AboutScreen = () => {
                     </div>
                 </div>
 
-                {/* 3 options */}
+                {/* 4 options */}
 
-                <div class="flex md:flex-row flex-col justify-between pt-24 pb-32">
+                <div class="flex md:flex-row flex-col justify-between pt-24 pb-32 sm:px-6">
                     <div class="flex flex-row space-x-5 justify-center pt-4">
                         <div class="bg-brand-white10 h-20 w-20 p-6 rounded-full">
                             <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -487,7 +487,7 @@ const AboutScreen = () => {
                         </div>
                         <div class="felx flex-col my-auto justify-start space-y-2">
                             <h1 class="text-4xl font-bold">
-                                $2402
+                                $ 2402
                             </h1>
                             <p class="opacity-80 text-sm">
                                 Have reviews with all in platform.
@@ -505,7 +505,7 @@ const AboutScreen = () => {
                         </div>
                         <div class="felx flex-col my-auto justify-start space-y-2">
                             <h1 class="text-4xl font-bold">
-                                $520
+                                $ 520
                             </h1>
                             <p class="opacity-80 text-sm">
                                 Have Product with all in platform.
@@ -523,10 +523,10 @@ const AboutScreen = () => {
                         </div>
                         <div class="felx flex-col my-auto justify-start space-y-2">
                             <h1 class="text-4xl font-bold">
-                                $4204
+                                $ 4204
                             </h1>
                             <p class="opacity-80 text-sm">
-                                Have user with all in platform.
+                                Have user with all in our platform.
                             </p>
                         </div>
                     </div>
@@ -541,13 +541,14 @@ const AboutScreen = () => {
                         </div>
                         <div class="felx flex-col my-auto justify-start space-y-2">
                             <h1 class="text-4xl font-bold">
-                                $30
+                                $ 30
                             </h1>
                             <p class="opacity-80 text-sm">
-                                Reivew per day in platform.
+                                Have  reivew per day in platform.
                             </p>
                         </div>
                     </div>
+                    
                 </div>
 
 

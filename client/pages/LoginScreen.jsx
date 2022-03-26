@@ -19,6 +19,7 @@ export default function Example() {
                 password: passwordRef.current.value,
             })
             dispatch({ type: "LOGIN_SUCCESS", payload: res.data });
+            window.location.href="http://localhost:4000/";
         } catch(err) {
             dispatch({ type: "LOGIN_FAILURE" });
         }

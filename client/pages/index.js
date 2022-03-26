@@ -18,7 +18,9 @@ export default function Home() {
 
       <AboutScreen/>
       <LastestScreen/>
-      <BestproductScreen/>
+
+      {/* <BestproductScreen/> */}
+
       <FeaturesScreen/>
       
     </div>

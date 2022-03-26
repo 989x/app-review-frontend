@@ -1,16 +1,18 @@
-import CommentForm from "../../../components/Post/CommentForm"
-import CommentOnPost from "../../../components/Post/CommentOnPost"
-  
 import React, { useState, useEffect, useContext } from 'react'
 import {useRouter} from 'next/router'
 import axios from "axios";
 import { Context } from "../../../context/Context";
+
+// comment
+import { CommentPost } from '../../../components/CommentProduct/commentpost';
 
 export default function Example() {
 
     const PF = "http://localhost:5001/images/";
 
     const [username, setUsername] = useState('')
+    const [profilePic, setProfilePic] = useState('')
+
     const [realName, setRealName] = useState('')
     const [typeOrCategory, setTypeOrCategory] = useState('')
     const [brandOrCompany, setBrandOrCompany] = useState('')
@@ -23,10 +25,8 @@ export default function Example() {
 
     const { user } = useContext(Context);
 
-//------------------------------------------------------------------------------------------------
-
+    //------------------------------------------------------------------------------------------------
     // for update
-
     const router = useRouter()
     useEffect(() => {
         if (router.query.id) {
@@ -39,6 +39,8 @@ export default function Example() {
                 setID(getData.data._id);
 
                 setUsername(getData.data.username);
+                setProfilePic(getData.data.profilePic);
+
                 setRealName(getData.data['realName']);
                 setTypeOrCategory(getData.data['typeOrCategory']);
                 setBrandOrCompany(getData.data['brandOrCompany']);
@@ -54,27 +56,44 @@ export default function Example() {
         }
     }, [router.query.id])
 
-//------------------------------------------------------------------------------------------------
-
+    //------------------------------------------------------------------------------------------------
     // for delete
-
     const onDelete = () => {
-
         if(window.confirm('Do you want to delete')){
             axios.delete(`http://localhost:5001/api/products/${router.query.id}`, {data: {username: user.username}})
             , window.location.href="http://localhost:4000/";
-
             // .get(() => {
             //     getData();
             // })
         }
     }
 
+    //------------------------------------------------------------------------------------------------
+    // Comment Product
+    const [comment, setComment] = useState('')
+
+    const handleComment = async(e) => {
+        e.preventDefault()
+        try {
+            const commment = await axios.post(`http://localhost:5001/api/products/${router.query.id}/comments/create`,{
+                comment,
+                // comment,
+                // product_id: product_id,
+                product_id: _id,
+                // user_id: req.body.user_id
+                user_id: user._id
+            })
+            window.location.reload()
+            console.log(commment)
+        } catch(err) {
+            console.log(err)
+        }
+    }
+
+    //------------------------------------------------------------------------------------------------
     return (
         <div className="bg-white">
-            
             <div>
-
 
                 {/* nav bar item */}
                 <div className="max-w-2xl mx-auto px-4 grid items-center grid-cols-1 gap-y-16 gap-x-8 sm:px-6 sm:pt-6 sm:pb-4 lg:max-w-screen-2xl lg:px-6 lg:grid-cols-2">
@@ -109,13 +128,29 @@ export default function Example() {
                     <div>
                         <div className="grid grid-col-2 sm:gap-6 lg:gap-8 justify-items-center">
 
-                            <img
+                            {
+                                photo ? (
+                                    <img
+                                        src={PF + photo}
+                                        alt="Walnut card tray with white powder coated steel divider and 3 punchout holes."
+                                        className="bg-gray-100 rounded w-11/12"
+                                    />
+                                ) : (
+                                    <img
+                                        className="w-80 h-80 "
+                                        src="/img/No_image_available.png"
+                                        alt=""
+                                    />
+                                )
+                            }
+
+                            {/* <img
                             src={PF + photo}
                             alt="Walnut card tray with white powder coated steel divider and 3 punchout holes."
                             className="bg-gray-100 rounded w-11/12"
-                            />
+                            /> */}
 
-                            <div className="flex sm:gap-4 justify-around">
+                            {/* <div className="flex sm:gap-4 justify-around">
                                 <img 
                                 width={100} height={100}
                                 src="/img/graphics-card.webp"
@@ -146,12 +181,10 @@ export default function Example() {
                                 alt="Walnut card tray filled with cards and card angled in dedicated groove."
                                 className="bg-gray-100 rounded object-cover h-full w-24"
                                 />
-                            </div>
+                            </div> */}
                         </div>
                     </div>
 
-
-                
                     {/* item detail */}
                     <div className="grid grid-col-2 lg:gap-4">
 
@@ -164,19 +197,19 @@ export default function Example() {
                                     </div>
                                     <a
                                         href={`/review/${router.query.id}/update`}
-                                        className="inline-flex items-center py-2 px-3 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-            // this here ---------------
+                                        className="font-medium py-2 px-4 rounded-lg text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                    // this here ---------------
                                         // onClick={ setData(nameProduct, aboutProduct, brandProduct, choice, title, message)}
                                         
                                         // onClick={() => test()}
-            // this here ---------------
+                    // this here ---------------
                                     >
                                         Edit
                                     </a>
 
                                     <a 
                                         // href="/"
-                                        className="bg-red-500 hover:bg-red-800 text-white font-bold py-2 px-4 rounded"
+                                        className="font-medium py-2 px-4 rounded-lg bg-red-500 hover:bg-red-800 text-white"
                                         onClick={() => onDelete(router.query.id)}
                                     >
                                         Delete
@@ -230,7 +263,7 @@ export default function Example() {
 
                             <div>
                                 <div className="flex items-center">
-                                    <img className="w-12 h-12 rounded-full mr-6" src="/img/exploding-head.png" alt="Avatar of Jonathan Reinink" />
+                                    <img className="w-12 h-12 rounded-full mr-6" src={PF + profilePic} alt="Avatar of Jonathan Reinink" />
                                     <div>
 
                                         <div className="pb-1">
@@ -278,10 +311,135 @@ export default function Example() {
                     </div>
 
                 </div>
+                
+        {/* comment ----------------------------------- ----------------------------------- -----------------------------------  */}
+                
+                <div class="max-w-2xl mx-auto px-4 grid grid-cols-1 gap-y-16 gap-x-8 sm:px-6 sm:pb-16 lg:max-w-screen-2xl lg:px-6 lg:grid-cols-2">
+                {/* <div class="flex mx-auto items-center justify-center shadow-lg mb-4 max-w-xl"> */}
+                    <div class="mx-3 mb-6">
+                        <h2 class="px-4 pt-3 pb-2 text-gray-800 text-lg">Add a new comment</h2>
+                        <div class="w-full md:w-full px-3 mb-2 mt-2">
+                            <textarea 
+                                class="bg-gray-100 rounded border border-gray-400 leading-normal resize-none w-full h-20 py-2 px-3 font-medium placeholder-gray-700 focus:outline-none focus:bg-white" 
+                                name="body" 
+                                placeholder='Type Your Comment' 
+                                required
+
+                                onChange = {(e) => setComment(e.target.value)}
+                                value = {comment}
+                            />
+                        </div>
+                        <div class="w-full md:w-full flex items-start px-3">
+                            <div class="flex items-start w-1/2 text-gray-700 px-2 mr-auto">
+                            <svg fill="none" class="w-5 h-5 text-gray-600 mr-1" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                            </svg>
+                            <p class="text-xs md:text-sm pt-px">Some HTML is okay.</p>
+                            </div>
+                            <div class="-mr-1">
+                            <input 
+                                type='submit' 
+                                class="bg-white text-gray-700 font-medium py-1 px-4 border border-gray-400 rounded-lg tracking-wide mr-1 hover:bg-gray-100" 
+                                value='Post Comment'
+
+                                onClick = {handleComment}
+                            />
+                            </div>
+                        </div>
+
+                    </div>
+
+
+
+                    <div className="">
+                        {router.query.id && (
+                            <CommentPost 
+                                comment={router.query.id}
+                                class="max-w-2xl mx-auto px-4 grid grid-cols-1 gap-y-16 gap-x-8 sm:px-6 sm:pb-16 lg:max-w-screen-2xl lg:px-6 lg:grid-cols-2"
+                            />  
+                        )}
+
+                    </div>
+
+
+
+
+
+{/* 
+                    <div class="mx-3 mb-6">
+                        <h2 class="px-4 pt-3 pb-2 text-gray-800 text-lg">Add a new comment</h2>
+                        <div class="w-full md:w-full px-3 mb-2 mt-2">
+                            <textarea 
+                                class="bg-gray-100 rounded border border-gray-400 leading-normal resize-none w-full h-20 py-2 px-3 font-medium placeholder-gray-700 focus:outline-none focus:bg-white" 
+                                name="body" 
+                                placeholder='Type Your Comment' 
+                                required
+
+                                onChange = {(e) => setComment(e.target.value)}
+                                value = {comment}
+                            />
+                        </div>
+                        <div class="w-full md:w-full flex items-start px-3">
+                            <div class="flex items-start w-1/2 text-gray-700 px-2 mr-auto">
+                            <svg fill="none" class="w-5 h-5 text-gray-600 mr-1" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                            </svg>
+                            <p class="text-xs md:text-sm pt-px">Some HTML is okay.</p>
+                            </div>
+                            <div class="-mr-1">
+                            <input 
+                                type='submit' 
+                                class="bg-white text-gray-700 font-medium py-1 px-4 border border-gray-400 rounded-lg tracking-wide mr-1 hover:bg-gray-100" 
+                                value='Post Comment'
+
+                                onClick = {handleComment}
+                            />
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="mx-3 mb-6">
+                        <h2 class="px-4 pt-3 pb-2 text-gray-800 text-lg">Add a new comment</h2>
+                        <div class="w-full md:w-full px-3 mb-2 mt-2">
+                            <textarea 
+                                class="bg-gray-100 rounded border border-gray-400 leading-normal resize-none w-full h-20 py-2 px-3 font-medium placeholder-gray-700 focus:outline-none focus:bg-white" 
+                                name="body" 
+                                placeholder='Type Your Comment' 
+                                required
+
+                                onChange = {(e) => setComment(e.target.value)}
+                                value = {comment}
+                            />
+                        </div>
+                        <div class="w-full md:w-full flex items-start px-3">
+                            <div class="flex items-start w-1/2 text-gray-700 px-2 mr-auto">
+                            <svg fill="none" class="w-5 h-5 text-gray-600 mr-1" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                            </svg>
+                            <p class="text-xs md:text-sm pt-px">Some HTML is okay.</p>
+                            </div>
+                            <div class="-mr-1">
+                            <input 
+                                type='submit' 
+                                class="bg-white text-gray-700 font-medium py-1 px-4 border border-gray-400 rounded-lg tracking-wide mr-1 hover:bg-gray-100" 
+                                value='Post Comment'
+
+                                onClick = {handleComment}
+                            />
+                            </div>
+                        </div>
+
+                    </div> */}
+
+
+
+
+                </div>
+
+
 
             </div>                    
-
-
         </div>
     )
 }

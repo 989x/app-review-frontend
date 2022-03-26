@@ -19,9 +19,14 @@ export default function UpdateReview() {
     const [photo, setPhoto] = useState('')
     const [_id, setID] = useState(null);
 
+    // new
+    const [file, setFile] = useState(null)
+
+
     // get data
 
     const router = useRouter()
+
     useEffect(() => {
         if (router.query.id) {
 
@@ -48,12 +53,52 @@ export default function UpdateReview() {
 
     // update
 
-    const sendDataToAPI = () => {
-        axios.put(`http://localhost:5001/api/products/${router.query.id}`, {
-            username: user.username, realName, typeOrCategory, brandOrCompany, goodOrNot, title, message,
-        })
-        window.location.replace(`/review/${router.query.id}/`);
-    }
+    // const sendDataToAPI = () => {
+    //     axios.put(`http://localhost:5001/api/products/${router.query.id}`, {
+    //         username: user.username, 
+    //         realName, 
+    //         typeOrCategory, 
+    //         brandOrCompany, 
+    //         goodOrNot, 
+    //         title,
+    //         message,
+    //     })
+    //     window.location.replace(`/review/${router.query.id}/`);
+    // }
+
+    const sendDataToAPI = async(e) => {
+        e.preventDefault()
+
+        const updatePost = {
+            username: user.username  , 
+            realName, 
+            typeOrCategory, 
+            brandOrCompany, 
+            goodOrNot, 
+            title,
+            message,
+        };
+        if(file){
+            const data = new FormData()
+            const filename = Date.now() + file.name;
+            data.append("name", filename);
+            data.append("file", file);   
+            updatePost.photo = filename;
+            try {
+                await axios.post("http://localhost:5001/api/upload", data);
+            } catch(err) {
+                console.log(err)
+            }         
+        }
+        try {
+            await axios.put(`http://localhost:5001/api/products/${router.query.id}`,updatePost);
+            window.location.replace(`/review/${router.query.id}/`);
+        } catch(err) {
+            console.log(err)
+            // console.log(updatePost)
+            // console.log(username)
+        }
+    };
 
     return (
         
@@ -216,12 +261,14 @@ export default function UpdateReview() {
                                     <label className="block text-sm font-medium text-gray-700">Cover photo</label>
                                     <div className="mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-md">
                                     {
-                                        photo ? (
+                                        file ? (
                                             <div>
-                                                { photo && 
+                                                { file && 
                                                     <img 
                                                         className="rounded-xl object-cover h-80 w-full"
-                                                        src={PF + photo}
+                                                        // src={PF + photo}
+                                                        // src={file ? URL.createObjectURL(file) : (PF + photo)} 
+                                                        src={URL.createObjectURL(file)} 
                                                         alt=""
                                                     />
                                                 }
@@ -229,39 +276,65 @@ export default function UpdateReview() {
                                             
                                         ) : (
                                             <div className="space-y-1 text-center">
-                                                <svg
-                                                    className="mx-auto h-12 w-12 text-gray-400"
-                                                    stroke="currentColor"
-                                                    fill="none"
-                                                    viewBox="0 0 48 48"
-                                                    aria-hidden="true"
-                                                >
-                                                    <path
-                                                    d="M28 8H12a4 4 0 00-4 4v20m32-12v8m0 0v8a4 4 0 01-4 4H12a4 4 0 01-4-4v-4m32-4l-3.172-3.172a4 4 0 00-5.656 0L28 28M8 32l9.172-9.172a4 4 0 015.656 0L28 28m0 0l4 4m4-24h8m-4-4v8m-12 4h.02"
-                                                    strokeWidth={2}
-                                                    strokeLinecap="round"
-                                                    strokeLinejoin="round"
-                                                    />
-                                                </svg>
-                                                <div className="flex text-sm text-gray-600">
-                                                <label
-                                                    htmlFor="file-upload"
-                                                    className="relative cursor-pointer bg-white rounded-md font-medium text-indigo-600 hover:text-indigo-500 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-indigo-500"
-                                                >
-                                                    <span>Upload a file</span>
-                                                    <input id="file-upload" name="file-upload" type="file" className="sr-only" 
-                                                        onChange = {(e) => setFile(e.target.files[0])}    
-                                                    />
-                                                </label>
+                                                {
+                                                    photo ? (
+                                                        <img
+                                                            className="rounded-xl object-cover h-80 w-full"
+                                                            src={PF + photo}
+                                                            alt=""
+                                                        />
+                                                    ) : (
+                                                        <div>
+                                                            <svg
+                                                                className="mx-auto h-12 w-12 text-gray-400"
+                                                                stroke="currentColor"
+                                                                fill="none"
+                                                                viewBox="0 0 48 48"
+                                                                aria-hidden="true"
+                                                            >
+                                                                <path
+                                                                d="M28 8H12a4 4 0 00-4 4v20m32-12v8m0 0v8a4 4 0 01-4 4H12a4 4 0 01-4-4v-4m32-4l-3.172-3.172a4 4 0 00-5.656 0L28 28M8 32l9.172-9.172a4 4 0 015.656 0L28 28m0 0l4 4m4-24h8m-4-4v8m-12 4h.02"
+                                                                strokeWidth={2}
+                                                                strokeLinecap="round"
+                                                                strokeLinejoin="round"
+                                                                />
+                                                            </svg>
+                                                            <div className="flex text-sm text-gray-600">
+                                                                <label
+                                                                    htmlFor="file-upload"
+                                                                    className="relative cursor-pointer bg-white rounded-md font-medium text-indigo-600 hover:text-indigo-500 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-indigo-500"
+                                                                >
+                                                                    <span>Upload a file</span>
+                                                                    {/* <input id="file-upload" name="file-upload" type="file" className="sr-only" 
+                                                                        onChange = {(e) => setFile(e.target.files[0])}    
+                                                                    /> */}
+                                                                </label>
+                
+                                                                <p className="pl-1">or drag and drop</p>
+                                                            </div>
+                                                            
+                                                            <p className="text-xs text-gray-500">PNG, JPG, GIF up to 10MB</p> 
 
-                                                <p className="pl-1">or drag and drop</p>
-                                                </div>
-                                                <p className="text-xs text-gray-500">PNG, JPG, GIF up to 10MB</p>
+                                                        </div>
+                                                    )
+                                                }
+
+
                                             </div>
                                         )
                                     }
                                     </div>
                                 </div>
+
+                    {/* new input */}
+                                <input
+                                    onChange={(e) => setFile(e.target.files[0])}
+                                    
+                                    // style={{display:"none"}} 
+                                    type="file"
+                                    id="fileInput"
+                                    className="bg-white py-2 px-3 border border-gray-300 rounded-md shadow-sm text-sm leading-4 font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                                />
 
 
                             </div>

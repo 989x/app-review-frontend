@@ -6,21 +6,25 @@ import ProductCardAxios from "./ProductCardAxios";
 const LastestScreen = () => {
     return (
 
-        <div className={styles.container}>
+        <div className=" container mx-auto px-2">
+            <div className={styles.container}>
 
-            <p className="mt-2 mb-4 text-2xl leading-8 font-bold tracking-tight text-gray-900">
-                Lastest reviews
-            </p>
+                <p className="mt-2 mb-4 text-2xl leading-8 font-bold tracking-tight text-gray-900">
+                    Lastest reviews
+                </p>
 
-            <div className={styles.wrapper}>
+                <div className={styles.wrapper}>
 
-                <ProductCardAxios/>
-                {/* <ProductCardTH/>
-                <ProductCard/> */}
-                
-            </div>
+                    <ProductCardAxios/>
+                    {/* <ProductCardTH/>
+                    <ProductCard/> */}
+                    
+                </div>
 
-        </div>        
+            </div>        
+
+        </div>
+
       
     )
 }

@@ -18,6 +18,7 @@ const Reducer = (state, action) => {
                 isFetching: false,
                 error: true,
             }; 
+
         // logout
         case "LOGOUT":
             return {
@@ -25,6 +26,26 @@ const Reducer = (state, action) => {
                 isFetching: false,
                 error: false,
             }; 
+
+        // upload img profiel
+        case "UPDATE_START":
+            return {
+                ...state,
+                isFetching:true
+            };
+        case "UPDATE_SUCCESS":
+            return {
+                user: action.payload,
+                isFetching: false,
+                error: false,
+            };        
+        case "UPDATE_FAILUER":
+            return {
+                user: state.user,
+                isFetching: false,
+                error: true,
+            }; 
+
         default:
             return state;      
     }
