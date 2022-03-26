@@ -78,11 +78,11 @@ const ProductCardAxios = () => {
 
                                     <div className="pb-3">
                                         <a href="#">
-                                            <h5 className="h-10 font-['SoleiiBold'] mb-2 text-base text-gray-900 text-ellipsis overflow-hidden ...">{data.title}</h5>
+                                            <h5 className="h-11 font-['SoleiiBold'] mb-2 text-base text-gray-900 text-ellipsis overflow-hidden ...">{data.title}</h5>
                                         </a>
                                     </div>
 
-                                    <p className="h-20 mb-3 text-sm text-gray-900 text-ellipsis overflow-hidden ...">{data.message}</p>
+                                    <p className="h-20 mb-1 text-sm text-gray-900 text-ellipsis overflow-hidden ...">{data.message}</p>
                                     
                                     <div className="pt-3 pb-3">
                                         <div className="flex items-center">

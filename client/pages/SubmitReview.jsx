@@ -70,6 +70,7 @@ export default function SubmitReview() {
                                         Product Real Name 
                                     </label>
                                     <input
+                                        required
                                         onChange = {(e) => setRealName(e.target.value)} 
                                         value = {realName}
 
@@ -79,6 +80,7 @@ export default function SubmitReview() {
                                         className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
                                         placeholder="Exam : IPhone xs max 64 gb"
                                     />
+                                    <p className="pt-1 text-sm text-gray-500 flex flex-row-reverse space-x-4 space-x-reverse">Required : Minimun 6 characters</p>
                                 </div>
 
                                 <div className="col-span-6">
@@ -95,6 +97,7 @@ export default function SubmitReview() {
                                         className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
                                         placeholder="Exam : Apple"
                                     />
+                                    <p className="pt-1 text-sm text-gray-500 flex flex-row-reverse space-x-4 space-x-reverse">Required : Minimun 4 characters</p>
                                 </div>
 
                                 <div className="col-span-6">
@@ -111,6 +114,7 @@ export default function SubmitReview() {
                                         className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
                                         placeholder="Exam : Phone Mobile"
                                     />
+                                    <p className="pt-1 text-sm text-gray-500 flex flex-row-reverse space-x-4 space-x-reverse">Required : Minimun 4 characters</p>
                                 </div>
 
                                 
@@ -177,6 +181,7 @@ export default function SubmitReview() {
                                             placeholder="Exam : The pros and cons of this."
                                             defaultValue={''}
                                         />
+                                        <p className="pt-1 text-sm text-gray-500 flex flex-row-reverse space-x-4 space-x-reverse">Required : Minimun 10 characters</p>
                                     </div>
                                 </div>
 
@@ -196,6 +201,7 @@ export default function SubmitReview() {
                                             placeholder="Exam : It is fastest phone , when me play game is very smooth."
                                             defaultValue={''}
                                         />
+                                        <p className="pt-1 text-sm text-gray-500 flex flex-row-reverse space-x-4 space-x-reverse">Required : Minimun 10 characters</p>
                                     </div>
                                     {/* <p className="mt-2 text-sm text-gray-500">
                                         Write an honest review or what you feel.

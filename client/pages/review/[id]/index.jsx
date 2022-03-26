@@ -128,11 +128,27 @@ export default function Example() {
                     <div>
                         <div className="grid grid-col-2 sm:gap-6 lg:gap-8 justify-items-center">
 
-                            <img
+                            {
+                                photo ? (
+                                    <img
+                                        src={PF + photo}
+                                        alt="Walnut card tray with white powder coated steel divider and 3 punchout holes."
+                                        className="bg-gray-100 rounded w-11/12"
+                                    />
+                                ) : (
+                                    <img
+                                        className="w-80 h-80 "
+                                        src="/img/No_image_available.png"
+                                        alt=""
+                                    />
+                                )
+                            }
+
+                            {/* <img
                             src={PF + photo}
                             alt="Walnut card tray with white powder coated steel divider and 3 punchout holes."
                             className="bg-gray-100 rounded w-11/12"
-                            />
+                            /> */}
 
                             {/* <div className="flex sm:gap-4 justify-around">
                                 <img 
